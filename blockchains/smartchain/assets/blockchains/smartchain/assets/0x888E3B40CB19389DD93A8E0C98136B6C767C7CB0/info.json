@@ -1,0 +1,12 @@
+{
+  "name": "BTC25",
+  "symbol": "BTC25",
+  "type": "BEP20",
+  "decimals": 18,
+  "description": "BTC25 is a meme token created by a Bitcoin mining company. It’s just a fun token with no guaranteed value or borders. Issued on the BEP-20 standard. We will strive to make it a star project on Binance.",
+  "website": "https://app.galxe.com/quest/BTC25",
+  "explorer": "https://bscscan.com/token/0x888E3B40CB19389DD93A8E0C98136B6C767C7CB0",
+  "status": "active",
+  "id": "0x888E3B40CB19389DD93A8E0C98136B6C767C7CB0"
+}
+
