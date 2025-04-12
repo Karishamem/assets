@@ -1,0 +1,11 @@
+{
+  "name": "KARISHA",
+  "symbol": "KARISHA",
+  "type": "BEP20",
+  "decimals": 18,
+  "description": "KARISHA — это мем-токен для весёлого и понятного обучения нейросетям и ИИ.",
+  "website": "https://karisha.fun",
+  "explorer": "https://bscscan.com/token/0x3B7CB85DCDBE48D44016AE2E4E059E3FB543E02A",
+  "status": "active",
+  "id": "0x3B7CB85DCDBE48D44016AE2E4E059E3FB543E02A"
+}
