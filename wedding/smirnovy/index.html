@@ -163,8 +163,8 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
 .guest-names span:nth-child(3) { padding-left: 14%; }
 .guest-names i { font-style: normal; color: var(--wine); font-size: 1.6rem; padding-left: 12%; line-height: .6; }
 .cap { color: var(--wine); font-size: 1.45em; line-height: .8; }
-.loves { position: relative; margin: 18px calc(-1 * clamp(18px, 6vw, 36px)) 0; height: 300px; overflow: hidden; }
-.loves .lines { position: absolute; inset: -40% -30%; transform: rotate(-14deg); display: grid; align-content: center; gap: 2px; }
+.loves { position: relative; margin: 18px calc(-1 * clamp(18px, 6vw, 36px)) 0; max-width: none !important; height: 300px; overflow: hidden; }
+.loves .lines { position: absolute; inset: -60% -60%; transform: rotate(-14deg); display: grid; align-content: center; justify-items: center; gap: 2px; }
 .loves .lines span { white-space: nowrap; font-family: var(--font-script); font-size: 1.55rem; line-height: 1.5; color: var(--ink); opacity: .8; }
 .loves .lines span:nth-child(odd) { margin-left: -60px; }
 .photo {
@@ -211,8 +211,8 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
 .swatches li { width: 40px; height: 40px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
 
 /* countdown */
-.countdown { justify-items: start; text-align: left; padding-bottom: 60px; }
-.countdown h2 { text-align: left; max-width: 12ch; color: var(--wine); line-height: 1.05; }
+.countdown { justify-items: center; text-align: center; padding-bottom: 60px; }
+.countdown h2 { text-align: center; color: var(--wine); line-height: 1.1; }
 .units { display: flex; justify-content: center; gap: 10px; width: 100%; }
 .unit { display: grid; gap: 6px; justify-items: center; }
 .num {
@@ -381,13 +381,13 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
       <p class="dear">Дорогие</p>
       <h1 class="guest-names"><span><b class="cap">С</b>емья Смирновых</span></h1>
       <div class="loves" aria-hidden="true">
-        <div class="lines"><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you</span></div>
+        <div class="lines"><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span><span>I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you   I love you</span></div>
         <div class="photo p1"><div class="ph"><svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.5S0 14 0 6.5A6 6 0 0 1 12 4a6 6 0 0 1 12 2.5C24 14 12 21.5 12 21.5z" fill="currentColor"/></svg><span>В</span></div></div><div class="photo p2"><div class="ph"><span>К</span></div></div>
       </div>
     </section>
     <section class="panel">
       <h2>Мы женимся!</h2>
-      <div class="text"><p>Совсем скоро в нашей жизни произойдёт очень важное событие: наша свадьба!</p><p>Мы верим и надеемся, что этот день станет красивым началом долгой и счастливой жизни.</p><p>Позвольте пригласить Вас разделить с нами радость этого дня. Подарите свою поддержку и добрые пожелания, а мы, в свою очередь, поделимся частичкой нашего счастья.</p></div>
+      <div class="text"><p>Совсем скоро в нашей жизни произойдёт очень важное событие: наша свадьба!</p><p>Позвольте пригласить Вас разделить с нами радость этого дня. Подарите свою поддержку и добрые пожелания, а мы, в свою очередь, поделимся частичкой нашего счастья.</p></div>
     </section>
     <section class="panel">
       <h2>Наш день</h2>

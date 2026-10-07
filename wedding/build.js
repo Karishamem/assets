@@ -224,12 +224,12 @@ function hero(greeting, names) {
   const frame = (cls, i) => photos[i]
     ? `<div class="photo ${cls}"><img src="${photos[i]}" alt="${esc(couple.groom)} и ${esc(couple.bride)}"></div>`
     : `<div class="photo ${cls}"><div class="ph">${i === 0 ? HEART : ''}<span>${i === 0 ? esc(couple.groom[0]) : esc(couple.bride[0])}</span></div></div>`;
-  const line = Array(6).fill('I love you').join('   ');
+  const line = Array(14).fill('I love you').join('   ');
   return `<section class="panel hero">
       ${greeting ? `<p class="dear">${esc(greeting)}</p>` : ''}
       <h1 class="guest-names">${nameHtml}</h1>
       <div class="loves" aria-hidden="true">
-        <div class="lines">${Array(12).fill(`<span>${line}</span>`).join('')}</div>
+        <div class="lines">${Array(16).fill(`<span>${line}</span>`).join('')}</div>
         ${photos.length === 1 ? `<div class="photo single"><img src="${photos[0]}" alt="${esc(couple.groom)} и ${esc(couple.bride)}"></div>` : `${frame('p1', 0)}${frame('p2', 1)}`}
       </div>
     </section>`;
