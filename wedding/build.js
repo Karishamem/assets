@@ -361,7 +361,7 @@ function rsvp(guest) {
 
   return `<section class="panel" id="anketa">
       <h2>Анкета гостя</h2>
-      <p class="text">Чтобы мы всё подготовили и позаботились о вашем комфорте, заполните, пожалуйста, анкету${r.deadline ? ` до ${esc(r.deadline)}` : ''}.</p>
+      <p class="text">${r.intro ? esc(r.intro) : `Чтобы мы всё подготовили и позаботились о вашем комфорте, заполните, пожалуйста, анкету${r.deadline ? ` до ${esc(r.deadline)}` : ''}.`}</p>
       <form class="rsvp" id="rsvp" novalidate>
         <div class="q-card">
           <div class="q-head">${ICONS.heart}<p class="q-title">Сможете ли Вы прийти?</p></div>
