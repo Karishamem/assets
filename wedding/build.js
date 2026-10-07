@@ -282,8 +282,8 @@ function dressCode() {
       <h2>Дресс-код</h2>
       <div class="text">${paras(dc.text)}</div>
       ${dc.ladies || dc.gentlemen ? `<div class="dress">
-        ${dc.ladies ? `<div class="dress-item">${ph('dress-light')}<h3>Дамам</h3><p>${esc(dc.ladies)}</p></div>` : ''}
-        ${dc.gentlemen ? `<div class="dress-item">${ph('shirt-folded-light')}<h3>Кавалерам</h3><p>${esc(dc.gentlemen)}</p></div>` : ''}
+        ${dc.ladies ? `<div class="dress-item">${ph('dress-light')}<h3>Дамам</h3><p>${esc(dc.ladies)}</p>${dc.colorNote ? `<p class="color-note">${esc(dc.colorNote)}</p>` : ''}</div>` : ''}
+        ${dc.gentlemen ? `<div class="dress-item">${ph('shirt-folded-light')}<h3>Кавалерам</h3><p>${esc(dc.gentlemen)}</p>${dc.colorNote ? `<p class="color-note">${esc(dc.colorNote)}</p>` : ''}</div>` : ''}
       </div>` : ''}
       ${sw ? `<ul class="swatches" aria-label="Цвета праздника">${sw}</ul>` : ''}
     </section>`;
@@ -315,7 +315,10 @@ function organiser() {
   const links = [];
   if (digits) links.push(`<a href="tel:${esc(digits)}" aria-label="Позвонить">${SOCIAL.phone}</a>`);
   if (o.whatsapp) links.push(`<a href="https://wa.me/${esc(o.whatsapp.replace(/\D/g, ''))}" target="_blank" rel="noopener" aria-label="WhatsApp">${SOCIAL.whatsapp}</a>`);
-  if (o.max) links.push(`<a class="max" href="${esc(o.max)}" target="_blank" rel="noopener" aria-label="MAX">MAX</a>`);
+  // MAX: если дана ссылка на профиль, ведём на неё; если номер, кнопка копирует номер для поиска в MAX.
+  if (o.max) links.push(/^https?:/.test(o.max)
+    ? `<a class="max" href="${esc(o.max)}" target="_blank" rel="noopener" aria-label="MAX">MAX</a>`
+    : `<button class="max" type="button" data-copy="${esc(o.max)}" aria-label="MAX: скопировать номер">MAX</button>`);
   if (o.telegram) links.push(`<a href="${/^https?:/.test(o.telegram) ? esc(o.telegram) : `https://t.me/${esc(o.telegram.replace(/^@/, ''))}`}" target="_blank" rel="noopener" aria-label="Telegram">${SOCIAL.telegram}</a>`);
   return `<section class="panel">
       <h2>Организатор</h2>
@@ -324,7 +327,7 @@ function organiser() {
         ${o.name ? `<p><b>${esc(o.name)}</b></p>` : ''}
         ${o.phone ? `<p class="phone">${esc(o.phone)}</p>` : ''}
       </div>
-      ${links.length ? `<div class="socials">${links.join('')}</div>` : ''}
+      ${links.length ? `<div class="socials">${links.join('')}</div><p class="copy-hint" role="status" aria-live="polite"></p>` : ''}
     </section>`;
 }
 

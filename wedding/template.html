@@ -225,14 +225,17 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
 .dress-item h3 { margin: 0; font-family: var(--font-script); font-weight: 400; font-size: 1.7rem; line-height: 1.1; }
 .dress-item h3::first-letter { color: var(--wine); }
 .dress-item p { margin: 0; font-size: .85rem; line-height: 1.5; color: var(--ink-soft); }
-.socials a.max { font-family: var(--font-body); font-weight: 600; font-size: .72rem; letter-spacing: .04em; text-decoration: none; }
+.copy-hint { font-size: .85rem; color: var(--wine); min-height: 1.4em; }
+.dress-item .color-note { color: var(--wine); font-style: italic; }
+.socials .max { font-family: var(--font-body); font-weight: 600; font-size: .72rem; letter-spacing: .04em; text-decoration: none; }
 @media (max-width: 360px) { .dress { grid-template-columns: 1fr; } }
 
 /* organiser */
 .phone { font-size: 1.1rem; user-select: all; }
 .socials { display: flex; gap: 14px; justify-content: center; }
-.socials a { width: 46px; height: 46px; border-radius: 50%; background: var(--wine); color: var(--on-wine); display: grid; place-items: center; }
-.socials a:hover, .socials a:focus-visible { background: var(--wine-deep); outline: none; }
+.socials a, .socials button { width: 46px; height: 46px; border-radius: 50%; background: var(--wine); color: var(--on-wine); display: grid; place-items: center; }
+.socials a:hover, .socials a:focus-visible, .socials button:hover, .socials button:focus-visible { background: var(--wine-deep); outline: none; }
+.socials button { border: 0; cursor: pointer; padding: 0; }
 .socials a:active { transform: scale(.96); }
 .socials svg { width: 22px; height: 22px; }
 
@@ -372,6 +375,18 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
     }).join('');
   }
   tick(); setInterval(tick, 1000);
+
+  /* ---------- MAX: копируем номер ---------- */
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var num = b.getAttribute('data-copy'), hint = document.querySelector('.copy-hint');
+      function say(t) { if (hint) hint.textContent = t; }
+      var msg = 'Номер ' + num + ' скопирован. Найдите Карину в MAX по этому номеру.';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(function () { say(msg); }, function () { say('Найдите Карину в MAX по номеру ' + num); });
+      } else say('Найдите Карину в MAX по номеру ' + num);
+    });
+  });
 
   /* ---------- Questionnaire ---------- */
   var form = document.getElementById('rsvp');

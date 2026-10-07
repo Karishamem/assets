@@ -229,14 +229,17 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
 .dress-item h3 { margin: 0; font-family: var(--font-script); font-weight: 400; font-size: 1.7rem; line-height: 1.1; }
 .dress-item h3::first-letter { color: var(--wine); }
 .dress-item p { margin: 0; font-size: .85rem; line-height: 1.5; color: var(--ink-soft); }
-.socials a.max { font-family: var(--font-body); font-weight: 600; font-size: .72rem; letter-spacing: .04em; text-decoration: none; }
+.copy-hint { font-size: .85rem; color: var(--wine); min-height: 1.4em; }
+.dress-item .color-note { color: var(--wine); font-style: italic; }
+.socials .max { font-family: var(--font-body); font-weight: 600; font-size: .72rem; letter-spacing: .04em; text-decoration: none; }
 @media (max-width: 360px) { .dress { grid-template-columns: 1fr; } }
 
 /* organiser */
 .phone { font-size: 1.1rem; user-select: all; }
 .socials { display: flex; gap: 14px; justify-content: center; }
-.socials a { width: 46px; height: 46px; border-radius: 50%; background: var(--wine); color: var(--on-wine); display: grid; place-items: center; }
-.socials a:hover, .socials a:focus-visible { background: var(--wine-deep); outline: none; }
+.socials a, .socials button { width: 46px; height: 46px; border-radius: 50%; background: var(--wine); color: var(--on-wine); display: grid; place-items: center; }
+.socials a:hover, .socials a:focus-visible, .socials button:hover, .socials button:focus-visible { background: var(--wine-deep); outline: none; }
+.socials button { border: 0; cursor: pointer; padding: 0; }
 .socials a:active { transform: scale(.96); }
 .socials svg { width: 22px; height: 22px; }
 
@@ -423,7 +426,7 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
   <g stroke="#ffd98a" stroke-opacity=".5"><path d="M120 172h10"/><path d="M144 178h18"/><path d="M168 184h10"/><path d="M192 172h18"/><path d="M216 178h10"/><path d="M240 184h18"/><path d="M264 172h10"/></g>
   <g fill="#ffe7b0"><circle cx="70" cy="141" r="1.6"/><circle cx="90" cy="141" r="1.6"/><circle cx="110" cy="141" r="1.6"/><circle cx="130" cy="141" r="1.6"/><circle cx="150" cy="141" r="1.6"/><circle cx="170" cy="141" r="1.6"/><circle cx="190" cy="141" r="1.6"/><circle cx="210" cy="141" r="1.6"/><circle cx="230" cy="141" r="1.6"/><circle cx="250" cy="141" r="1.6"/><circle cx="270" cy="141" r="1.6"/><circle cx="290" cy="141" r="1.6"/><circle cx="310" cy="141" r="1.6"/></g>
 </svg></div></div>
-        <a class="pill" href="https://yandex.ru/maps/?text=Иркутск, улица Декабрьских Событий, 106" target="_blank" rel="noopener">посмотреть на карте</a>
+        <a class="pill" href="https://2gis.ru/irkutsk/firm/1548640653599476" target="_blank" rel="noopener">посмотреть на карте</a>
       </div>
     </section>
     <section class="panel">
@@ -446,12 +449,12 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
       <h2>Дресс-код</h2>
       <div class="text"><p>Мы хотим, чтобы фотографии со свадьбы с удовольствием пересматривали не только мы, но и вы!</p></div>
       <div class="dress">
-        <div class="dress-item"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M212.86,210.49a1.08,1.08,0,0,0-.08-.19l-45.94-97.86,21.08-33.1.09-.14a14,14,0,0,0,0-14.4c-.07-.12-.15-.24-.23-.36L166,33.33V8a6,6,0,0,0-12,0V33.12l-5.7,7.12a26,26,0,0,1-40.6,0L102,33.12V8A6,6,0,0,0,90,8V33.33L68.22,64.44c-.08.12-.16.24-.23.36a14,14,0,0,0,0,14.4l.09.14,21.08,33.1L43.22,210.3a1.08,1.08,0,0,0-.08.19A14,14,0,0,0,56,230H200a14,14,0,0,0,12.87-19.51ZM78.26,73a2,2,0,0,1-.05-1.89L96.32,45.23l2,2.51a38,38,0,0,0,59.34,0l2-2.51,18.11,25.86a2,2,0,0,1,0,1.89l-21,33H99.29ZM201.66,217.1a1.93,1.93,0,0,1-1.67.9H56a2,2,0,0,1-1.87-2.72L99.81,118h56.38l45.67,97.28A1.92,1.92,0,0,1,201.66,217.1Z"/></svg><h3>Дамам</h3><p>Вечернее нарядное платье. Цвет на ваше усмотрение.</p></div>
-        <div class="dress-item"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M200,42H178.48L164.25,27.76A6,6,0,0,0,160,26H96a6,6,0,0,0-4.25,1.76L77.52,42H56A14,14,0,0,0,42,56V208a14,14,0,0,0,14,14H200a14,14,0,0,0,14-14V56A14,14,0,0,0,200,42ZM128,69.18,107.21,38h41.58Zm32.93-27.76L170,50.49V104a2,2,0,0,1-3.25,1.56L135.93,78.92ZM86,50.49l9.07-9.07,25,37.5L89.25,105.54A2,2,0,0,1,86,104ZM54,208V56a2,2,0,0,1,2-2H74v50a13.87,13.87,0,0,0,8.06,12.68A14.11,14.11,0,0,0,88,118,13.87,13.87,0,0,0,97,114.74l.08-.07,25-21.56V210H56A2,2,0,0,1,54,208Zm148,0a2,2,0,0,1-2,2H134V93.11l25,21.56.08.07A13.87,13.87,0,0,0,168,118a14.08,14.08,0,0,0,6-1.35A13.87,13.87,0,0,0,182,104V54h18a2,2,0,0,1,2,2Z"/></svg><h3>Кавалерам</h3><p>Рубашка, брюки или джинсы, по желанию костюм. Любые цвета, которые вам нравятся.</p></div>
+        <div class="dress-item"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M212.86,210.49a1.08,1.08,0,0,0-.08-.19l-45.94-97.86,21.08-33.1.09-.14a14,14,0,0,0,0-14.4c-.07-.12-.15-.24-.23-.36L166,33.33V8a6,6,0,0,0-12,0V33.12l-5.7,7.12a26,26,0,0,1-40.6,0L102,33.12V8A6,6,0,0,0,90,8V33.33L68.22,64.44c-.08.12-.16.24-.23.36a14,14,0,0,0,0,14.4l.09.14,21.08,33.1L43.22,210.3a1.08,1.08,0,0,0-.08.19A14,14,0,0,0,56,230H200a14,14,0,0,0,12.87-19.51ZM78.26,73a2,2,0,0,1-.05-1.89L96.32,45.23l2,2.51a38,38,0,0,0,59.34,0l2-2.51,18.11,25.86a2,2,0,0,1,0,1.89l-21,33H99.29ZM201.66,217.1a1.93,1.93,0,0,1-1.67.9H56a2,2,0,0,1-1.87-2.72L99.81,118h56.38l45.67,97.28A1.92,1.92,0,0,1,201.66,217.1Z"/></svg><h3>Дамам</h3><p>Вечернее нарядное платье.</p><p class="color-note">Предпочтений по цвету нет: выбирайте на своё усмотрение.</p></div>
+        <div class="dress-item"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M200,42H178.48L164.25,27.76A6,6,0,0,0,160,26H96a6,6,0,0,0-4.25,1.76L77.52,42H56A14,14,0,0,0,42,56V208a14,14,0,0,0,14,14H200a14,14,0,0,0,14-14V56A14,14,0,0,0,200,42ZM128,69.18,107.21,38h41.58Zm32.93-27.76L170,50.49V104a2,2,0,0,1-3.25,1.56L135.93,78.92ZM86,50.49l9.07-9.07,25,37.5L89.25,105.54A2,2,0,0,1,86,104ZM54,208V56a2,2,0,0,1,2-2H74v50a13.87,13.87,0,0,0,8.06,12.68A14.11,14.11,0,0,0,88,118,13.87,13.87,0,0,0,97,114.74l.08-.07,25-21.56V210H56A2,2,0,0,1,54,208Zm148,0a2,2,0,0,1-2,2H134V93.11l25,21.56.08.07A13.87,13.87,0,0,0,168,118a14.08,14.08,0,0,0,6-1.35A13.87,13.87,0,0,0,182,104V54h18a2,2,0,0,1,2,2Z"/></svg><h3>Кавалерам</h3><p>Рубашка, брюки или джинсы, по желанию костюм.</p><p class="color-note">Предпочтений по цвету нет: выбирайте на своё усмотрение.</p></div>
       </div>
       
     </section>
-    <section class="panel"><div class="block"><h2>Цветы</h2><div class="text"><p>Цветы, если захотите их подарить, полностью на ваше усмотрение. Главное для нас это ваше присутствие, улыбки и хорошее настроение!</p></div></div></section>
+    <section class="panel"><div class="block"><h2>Подарки</h2><div class="text"><p>Дорогие родные и близкие!</p><p>Просим не озадачивать себя выбором подарков: наилучший подарок для нас это ваше присутствие и тёплые слова.</p><p>Если хотите преподнести ценный и нежный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи. И совсем не важно, в какой конверт вы его упакуете!</p></div><h2>Цветы</h2><div class="text"><p>Цветы, если захотите их подарить, полностью на ваше усмотрение. Главное для нас это ваше присутствие, улыбки и хорошее настроение!</p></div></div></section>
     <section class="panel countdown">
       <h2>Увидимся с вами через…</h2>
       <div class="units" id="countdown" aria-live="off"></div>
@@ -518,7 +521,7 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
         <p><b>Карина</b></p>
         <p class="phone">+7 996 038-13-48</p>
       </div>
-      <div class="socials"><a href="tel:+79960381348" aria-label="Позвонить"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M231.88,175.08A56.26,56.26,0,0,1,176,224C96.6,224,32,159.4,32,80A56.26,56.26,0,0,1,80.92,24.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,117.39,96c-.18.27-.37.52-.57.77L96,121.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,231.88,175.08Z"/></svg></a></div>
+      <div class="socials"><a href="tel:+79960381348" aria-label="Позвонить"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M231.88,175.08A56.26,56.26,0,0,1,176,224C96.6,224,32,159.4,32,80A56.26,56.26,0,0,1,80.92,24.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,117.39,96c-.18.27-.37.52-.57.77L96,121.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,231.88,175.08Z"/></svg></a><button class="max" type="button" data-copy="+79960381348" aria-label="MAX: скопировать номер">MAX</button><a href="https://t.me/me_sunlight" target="_blank" rel="noopener" aria-label="Telegram"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M228.88,26.19a9,9,0,0,0-9.16-1.57L17.06,103.93a14.22,14.22,0,0,0,2.43,27.21L72,141.45V200a15.92,15.92,0,0,0,10,14.83,15.91,15.91,0,0,0,17.51-3.73l25.32-26.26L165,220a15.88,15.88,0,0,0,10.51,4,16.3,16.3,0,0,0,5-.79,15.85,15.85,0,0,0,10.67-11.63L231.77,35A9,9,0,0,0,228.88,26.19ZM175.53,208,92.85,135.5l119-85.29Z"/></svg></a></div><p class="copy-hint" role="status" aria-live="polite"></p>
     </section>
     <section class="panel">
       <p class="signature">С любовью, Владимир и Карина</p>
@@ -576,6 +579,18 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
     }).join('');
   }
   tick(); setInterval(tick, 1000);
+
+  /* ---------- MAX: копируем номер ---------- */
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var num = b.getAttribute('data-copy'), hint = document.querySelector('.copy-hint');
+      function say(t) { if (hint) hint.textContent = t; }
+      var msg = 'Номер ' + num + ' скопирован. Найдите Карину в MAX по этому номеру.';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(function () { say(msg); }, function () { say('Найдите Карину в MAX по номеру ' + num); });
+      } else say('Найдите Карину в MAX по номеру ' + num);
+    });
+  });
 
   /* ---------- Questionnaire ---------- */
   var form = document.getElementById('rsvp');
