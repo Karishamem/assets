@@ -311,8 +311,8 @@ function dressCode() {
       <h2>Дресс-код</h2>
       <div class="text">${paras(dc.text)}</div>
       ${dc.ladies || dc.gentlemen ? `<div class="dress-cards">
-        ${dc.ladies ? `<div class="dress-card">${DRESS}<h3>Дамам</h3><p>${esc(dc.ladies)}</p></div>` : ''}
-        ${dc.gentlemen ? `<div class="dress-card">${SUIT}<h3>Джентльменам</h3><p>${esc(dc.gentlemen)}</p></div>` : ''}
+        ${dc.ladies ? `<div class="dress-card"><div class="arch">${DRESS}</div><h3>Дамам</h3><p>${esc(dc.ladies)}</p></div>` : ''}
+        ${dc.gentlemen ? `<div class="dress-card"><div class="arch">${SUIT}</div><h3>Джентльменам</h3><p>${esc(dc.gentlemen)}</p></div>` : ''}
       </div>` : ''}
       ${sw ? `<ul class="palette" aria-label="Цвета праздника">${sw}</ul>` : ''}
       ${dc.inspirationUrl ? `<a class="btn" href="${esc(dc.inspirationUrl)}" target="_blank" rel="noopener">Вдохновиться</a>` : ''}
@@ -348,7 +348,8 @@ function rsvp(guest) {
   const r = data.rsvp;
   if (!r) return '';
   const many = guest && (guest.type === 'pair' || guest.type === 'family');
-  const chip = (type, name, value, label = value) => `<label class="chip"><input type="${type}" name="${name}" value="${esc(value)}"><span>${esc(label)}</span></label>`;
+  const tick = ph('check-bold').replace('<svg ', '<svg class="tick" ');
+  const chip = (type, name, value, label = value) => `<label class="chip"><input type="${type}" name="${name}" value="${esc(value)}"><span>${tick}${esc(label)}</span></label>`;
   const card = (ic, title, hint, body, forId) => `<div class="q-card">
             <div class="q-head">${ICONS[ic]}<${forId ? `label for="${forId}"` : 'p'} class="q-title">${title}${hint ? `<small>${hint}</small>` : ''}</${forId ? 'label' : 'p'}></div>
             ${body}
@@ -403,7 +404,7 @@ function closing() {
   return `<section class="panel">
       ${FLOURISH}
       <p class="signature">${esc(couple.signature)}</p>
-      <button class="replay" id="replay" type="button">Открыть конверт заново ↺</button>
+      <button class="replay" id="replay" type="button">${ph('arrow-counter-clockwise-light')}Открыть конверт заново</button>
     </section>`;
 }
 
@@ -421,6 +422,7 @@ function render({ greeting, names, envelopeNames, message, title, guest }) {
     ENVELOPE_FRONT,
     ENVELOPE_FLAP,
     SEAL_SVG: sealSvg(couple.initials),
+    HAND_ICON: ph('hand-pointing-light'),
     COUPLE_SHORT: `${esc(couple.groom)} &amp; ${esc(couple.bride)}`,
     CONTENT: content,
     EVENT_DATE: JSON.stringify(event.date || null),

@@ -19,11 +19,12 @@
   --wisteria: #e4def0;
   --paper: #fbf7ee;
   --paper-edge: #efe7d6;
-  --olive: #7c8257;
-  --olive-deep: #5f6542;
+  --olive: #6b7148;
+  --olive-deep: #555b3a;
   --ink: #4b4a36;
-  --ink-soft: #7a7860;
-  --gold: #a58a52;
+  --ink-soft: #6e6c55;
+  --gold: #a58a52;        /* линии, иконки, орнамент */
+  --gold-ink: #866d3a;    /* мелкий текст золотом, контраст 4.6:1 */
   --blush: #d98f9a;
   --on-olive: #fbf7ee;
   --font-script: "Marck Script", "Segoe Script", cursive;
@@ -49,6 +50,9 @@ body {
   padding: max(24px, env(safe-area-inset-top)) 16px max(32px, env(safe-area-inset-bottom));
   overflow-x: hidden;
 }
+::selection { background: #d9d0ea; color: var(--ink); }
+html { scrollbar-color: #b9aed6 var(--wisteria); caret-color: var(--olive-deep); }
+a { text-underline-offset: 3px; text-decoration-thickness: 1px; }
 #petals { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 .stage { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
 
@@ -75,7 +79,7 @@ body {
 .letter::before {
   content: ""; position: absolute; inset: 8px; border: 1px solid rgba(165,138,82,.45); border-radius: 1px;
 }
-.letter small { font-family: var(--font-label); font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); }
+.letter small { font-family: var(--font-label); font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold-ink); }
 .letter b { font-family: var(--font-script); font-weight: 400; font-size: clamp(1.2rem, 5vw, 1.6rem); color: var(--olive-deep); }
 .env-front { z-index: 2; pointer-events: none; }
 .flap { z-index: 3; transform-origin: top center; transition: transform .7s cubic-bezier(.55,.05,.35,1); pointer-events: none; }
@@ -173,7 +177,7 @@ h2 {
 .unit { min-width: 56px; display: grid; }
 .num { font-size: 2.5rem; font-weight: 500; line-height: 1.05; font-variant-numeric: tabular-nums lining-nums; }
 .sep { font-size: 2.1rem; line-height: 1.1; opacity: .7; }
-.lbl { font-family: var(--font-label); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+.lbl { font-family: var(--font-label); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
 .cd-done { font-family: var(--font-script); font-size: 2rem; }
 
 /* programme */
@@ -185,7 +189,7 @@ h2 {
 .program .what { padding-bottom: 26px; min-width: 0; }
 .program .head { display: grid; gap: 0; }
 .program .head b { font-family: var(--font-script); font-weight: 400; font-size: 1.55rem; line-height: 1.1; color: var(--olive-deep); }
-.program .head time { order: -1; font-family: var(--font-label); font-size: .8rem; letter-spacing: .14em; color: var(--gold); font-variant-numeric: tabular-nums lining-nums; }
+.program .head time { order: -1; font-family: var(--font-label); font-size: .8rem; letter-spacing: .14em; color: var(--gold-ink); font-variant-numeric: tabular-nums lining-nums; }
 .program .what p { margin: 4px 0 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.45; }
 
 /* location */
@@ -200,14 +204,14 @@ h2 {
 }
 .btn:hover, .btn:focus-visible { background: var(--olive-deep); outline: none; }
 .btn:active, .chip:active span, .socials a:active { transform: scale(.98); }
-.rsvp ::placeholder { color: #8d8a73; opacity: 1; }
+.rsvp ::placeholder { color: var(--ink-soft); opacity: .85; }
 .btn:focus-visible { box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--gold); }
 .btn.ghost { background: transparent; color: var(--olive-deep); box-shadow: inset 0 0 0 1px var(--olive); }
 .btn[disabled] { opacity: .55; cursor: wait; }
 
 /* wishes */
 .wish { display: grid; gap: 8px; justify-items: center; }
-.wish + .wish { margin-top: 14px; }
+.wish + .wish { margin-top: 8px; }
 .wish svg { width: 46px; height: 46px; color: rgba(251,247,238,.85); }
 .wish h3 { margin: 0; font-family: var(--font-script); font-weight: 400; font-size: 1.8rem; line-height: 1.1; }
 .wish p { margin: 0; max-width: 32ch; }
@@ -237,7 +241,7 @@ h2 {
 .rsvp fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 8px; min-width: 0; }
 .rsvp legend, .rsvp label.q {
   font-family: var(--font-label); font-weight: 500; font-size: .72rem; letter-spacing: .16em;
-  text-transform: uppercase; color: var(--gold); padding: 0; margin-bottom: 4px;
+  text-transform: uppercase; color: var(--gold-ink); padding: 0; margin-bottom: 4px;
 }
 .choice { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 1.1rem; line-height: 1.35; }
 .choice input { accent-color: var(--olive); width: 18px; height: 18px; margin: 3px 0 0; flex: none; }
@@ -260,18 +264,20 @@ h2 {
 
 .signature { font-family: var(--font-script); font-size: 1.6rem; color: var(--olive-deep); text-wrap: balance; }
 .replay {
-  background: none; border: 0; cursor: pointer; padding: 8px;
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  background: none; border: 0; cursor: pointer; padding: 8px 12px;
   font-family: var(--font-label); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
 }
+.replay svg { width: 16px; height: 16px; }
+.replay:hover { color: var(--olive-deep); }
 .replay:focus-visible { outline: 2px solid var(--gold); }
+.thanks .big { animation: beat 1.4s ease-out 1; }
+@keyframes beat { 0% { transform: scale(.85); opacity: 0; } 40% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); } }
 
 /* question cards */
-.rsvp { gap: 14px; }
-.q-card {
-  background: #fffdf8; border: 1px solid rgba(165,138,82,.28); border-radius: 14px;
-  padding: 16px 16px 18px; display: grid; gap: 10px; min-width: 0;
-  box-shadow: 0 6px 16px -12px rgba(75,74,54,.45);
-}
+.rsvp { gap: 20px; }
+.q-card { display: grid; gap: 12px; min-width: 0; padding-top: 20px; border-top: 1px solid rgba(165,138,82,.3); }
+.rsvp > .q-card:first-child { border-top: 0; padding-top: 0; }
 .q-head { display: flex; align-items: center; gap: 12px; }
 .q-head svg { width: 38px; height: 38px; flex: none; color: var(--gold); background: var(--paper-edge); border-radius: 50%; padding: 6px; }
 .q-head .q-title { font-family: var(--font-serif); font-weight: 600; font-size: 1.12rem; line-height: 1.25; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0; padding: 0; }
@@ -280,28 +286,32 @@ h2 {
 .chip { position: relative; cursor: pointer; }
 .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
 .chip span {
-  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 16px; border-radius: 999px;
   border: 1px solid rgba(124,130,87,.45); font-size: 1.02rem; line-height: 1.2; color: var(--ink);
   background: var(--paper); transition: background .2s, color .2s, border-color .2s;
 }
 .chip input:checked + span { background: var(--olive); border-color: var(--olive); color: var(--on-olive); }
-.chip input:checked + span::before { content: "✓"; font-size: .9em; }
+.chip .tick { display: none; width: 14px; height: 14px; }
+.chip input:checked + span .tick { display: block; }
+.chip:hover span { border-color: var(--olive); }
 .chip input:focus-visible + span { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--gold); }
 .attend { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .attend .chip span { display: grid; justify-items: center; gap: 6px; text-align: center; border-radius: 14px; padding: 14px 8px; height: 100%; }
 .attend .chip svg { width: 34px; height: 34px; color: var(--gold); }
 .attend .chip input:checked + span svg { color: var(--on-olive); }
-.attend .chip input:checked + span::before { content: none; }
+
 .q-card input[type="text"], .q-card textarea { background: var(--paper); }
-.when-yes { gap: 14px; }
+.when-yes { gap: 20px; }
 
 /* dress code cards */
-.dress-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
-.dress-card {
-  background: #fffdf8; border: 1px solid rgba(165,138,82,.28); border-radius: 120px 120px 14px 14px;
-  padding: 22px 12px 16px; display: grid; gap: 6px; justify-items: center; align-content: start; min-width: 0;
+.dress-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; }
+.dress-card { display: grid; gap: 8px; justify-items: center; align-content: start; min-width: 0; }
+.dress-card .arch {
+  width: 100%; max-width: 150px; aspect-ratio: 3 / 4; display: grid; place-items: center;
+  background: linear-gradient(180deg, #ffffff, var(--paper-edge)); border-radius: 999px 999px 14px 14px;
+  box-shadow: inset 0 0 0 1px rgba(165,138,82,.3);
 }
-.dress-card svg { width: 76px; height: 96px; }
+.dress-card svg { width: 58%; height: auto; }
 .dress-card h3 { margin: 0; font-family: var(--font-script); font-weight: 400; font-size: clamp(1.15rem, 5vw, 1.4rem); color: var(--olive-deep); }
 .dress-card p { margin: 0; font-size: .98rem; line-height: 1.4; color: var(--ink-soft); }
 @media (max-width: 380px) { .dress-cards { grid-template-columns: 1fr; } }
@@ -311,7 +321,7 @@ h2 {
 .manor svg { display: block; width: 100%; height: auto; }
 .avatar { width: 84px; height: 84px; border-radius: 50%; background: var(--paper-edge); display: grid; place-items: center; color: var(--gold); box-shadow: inset 0 0 0 1px rgba(165,138,82,.35); }
 .avatar svg { width: 46px; height: 46px; }
-.wish { background: rgba(251,247,238,.08); border: 1px solid rgba(251,247,238,.25); border-radius: 16px; padding: 18px 16px; width: 100%; max-width: 360px; }
+.wish + .wish { padding-top: 22px; border-top: 1px solid rgba(251,247,238,.3); width: 100%; max-width: 320px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -334,7 +344,7 @@ h2 {
         <span>{{ENVELOPE_NAMES}}</span>
       </span>
     </button>
-    <p class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v4.5c0 3.6-2.4 6.5-6 6.5-2.5 0-3.8-1-5.3-3L4.4 14a1.5 1.5 0 0 1 2.3-1.9L9 14"/></svg>Нажмите на конверт</p>
+    <p class="hint">{{HAND_ICON}}Нажмите на конверт</p>
   </div>
 
   <article class="card" id="card">
@@ -434,6 +444,7 @@ h2 {
           var yes = attend.value !== 'Не придёт';
           try { localStorage.setItem(KEY, yes ? 'yes' : 'no'); } catch (e) {}
           showThanks(yes);
+          if (yes) burst();
         })
         .catch(function () {
           status.className = 'status err';

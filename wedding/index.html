@@ -19,11 +19,12 @@
   --wisteria: #e4def0;
   --paper: #fbf7ee;
   --paper-edge: #efe7d6;
-  --olive: #7c8257;
-  --olive-deep: #5f6542;
+  --olive: #6b7148;
+  --olive-deep: #555b3a;
   --ink: #4b4a36;
-  --ink-soft: #7a7860;
-  --gold: #a58a52;
+  --ink-soft: #6e6c55;
+  --gold: #a58a52;        /* линии, иконки, орнамент */
+  --gold-ink: #866d3a;    /* мелкий текст золотом, контраст 4.6:1 */
   --blush: #d98f9a;
   --on-olive: #fbf7ee;
   --font-script: "Marck Script", "Segoe Script", cursive;
@@ -49,6 +50,9 @@ body {
   padding: max(24px, env(safe-area-inset-top)) 16px max(32px, env(safe-area-inset-bottom));
   overflow-x: hidden;
 }
+::selection { background: #d9d0ea; color: var(--ink); }
+html { scrollbar-color: #b9aed6 var(--wisteria); caret-color: var(--olive-deep); }
+a { text-underline-offset: 3px; text-decoration-thickness: 1px; }
 #petals { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 .stage { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
 
@@ -75,7 +79,7 @@ body {
 .letter::before {
   content: ""; position: absolute; inset: 8px; border: 1px solid rgba(165,138,82,.45); border-radius: 1px;
 }
-.letter small { font-family: var(--font-label); font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); }
+.letter small { font-family: var(--font-label); font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold-ink); }
 .letter b { font-family: var(--font-script); font-weight: 400; font-size: clamp(1.2rem, 5vw, 1.6rem); color: var(--olive-deep); }
 .env-front { z-index: 2; pointer-events: none; }
 .flap { z-index: 3; transform-origin: top center; transition: transform .7s cubic-bezier(.55,.05,.35,1); pointer-events: none; }
@@ -173,7 +177,7 @@ h2 {
 .unit { min-width: 56px; display: grid; }
 .num { font-size: 2.5rem; font-weight: 500; line-height: 1.05; font-variant-numeric: tabular-nums lining-nums; }
 .sep { font-size: 2.1rem; line-height: 1.1; opacity: .7; }
-.lbl { font-family: var(--font-label); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+.lbl { font-family: var(--font-label); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
 .cd-done { font-family: var(--font-script); font-size: 2rem; }
 
 /* programme */
@@ -185,7 +189,7 @@ h2 {
 .program .what { padding-bottom: 26px; min-width: 0; }
 .program .head { display: grid; gap: 0; }
 .program .head b { font-family: var(--font-script); font-weight: 400; font-size: 1.55rem; line-height: 1.1; color: var(--olive-deep); }
-.program .head time { order: -1; font-family: var(--font-label); font-size: .8rem; letter-spacing: .14em; color: var(--gold); font-variant-numeric: tabular-nums lining-nums; }
+.program .head time { order: -1; font-family: var(--font-label); font-size: .8rem; letter-spacing: .14em; color: var(--gold-ink); font-variant-numeric: tabular-nums lining-nums; }
 .program .what p { margin: 4px 0 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.45; }
 
 /* location */
@@ -200,14 +204,14 @@ h2 {
 }
 .btn:hover, .btn:focus-visible { background: var(--olive-deep); outline: none; }
 .btn:active, .chip:active span, .socials a:active { transform: scale(.98); }
-.rsvp ::placeholder { color: #8d8a73; opacity: 1; }
+.rsvp ::placeholder { color: var(--ink-soft); opacity: .85; }
 .btn:focus-visible { box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--gold); }
 .btn.ghost { background: transparent; color: var(--olive-deep); box-shadow: inset 0 0 0 1px var(--olive); }
 .btn[disabled] { opacity: .55; cursor: wait; }
 
 /* wishes */
 .wish { display: grid; gap: 8px; justify-items: center; }
-.wish + .wish { margin-top: 14px; }
+.wish + .wish { margin-top: 8px; }
 .wish svg { width: 46px; height: 46px; color: rgba(251,247,238,.85); }
 .wish h3 { margin: 0; font-family: var(--font-script); font-weight: 400; font-size: 1.8rem; line-height: 1.1; }
 .wish p { margin: 0; max-width: 32ch; }
@@ -237,7 +241,7 @@ h2 {
 .rsvp fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 8px; min-width: 0; }
 .rsvp legend, .rsvp label.q {
   font-family: var(--font-label); font-weight: 500; font-size: .72rem; letter-spacing: .16em;
-  text-transform: uppercase; color: var(--gold); padding: 0; margin-bottom: 4px;
+  text-transform: uppercase; color: var(--gold-ink); padding: 0; margin-bottom: 4px;
 }
 .choice { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 1.1rem; line-height: 1.35; }
 .choice input { accent-color: var(--olive); width: 18px; height: 18px; margin: 3px 0 0; flex: none; }
@@ -260,18 +264,20 @@ h2 {
 
 .signature { font-family: var(--font-script); font-size: 1.6rem; color: var(--olive-deep); text-wrap: balance; }
 .replay {
-  background: none; border: 0; cursor: pointer; padding: 8px;
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  background: none; border: 0; cursor: pointer; padding: 8px 12px;
   font-family: var(--font-label); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
 }
+.replay svg { width: 16px; height: 16px; }
+.replay:hover { color: var(--olive-deep); }
 .replay:focus-visible { outline: 2px solid var(--gold); }
+.thanks .big { animation: beat 1.4s ease-out 1; }
+@keyframes beat { 0% { transform: scale(.85); opacity: 0; } 40% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); } }
 
 /* question cards */
-.rsvp { gap: 14px; }
-.q-card {
-  background: #fffdf8; border: 1px solid rgba(165,138,82,.28); border-radius: 14px;
-  padding: 16px 16px 18px; display: grid; gap: 10px; min-width: 0;
-  box-shadow: 0 6px 16px -12px rgba(75,74,54,.45);
-}
+.rsvp { gap: 20px; }
+.q-card { display: grid; gap: 12px; min-width: 0; padding-top: 20px; border-top: 1px solid rgba(165,138,82,.3); }
+.rsvp > .q-card:first-child { border-top: 0; padding-top: 0; }
 .q-head { display: flex; align-items: center; gap: 12px; }
 .q-head svg { width: 38px; height: 38px; flex: none; color: var(--gold); background: var(--paper-edge); border-radius: 50%; padding: 6px; }
 .q-head .q-title { font-family: var(--font-serif); font-weight: 600; font-size: 1.12rem; line-height: 1.25; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0; padding: 0; }
@@ -280,28 +286,32 @@ h2 {
 .chip { position: relative; cursor: pointer; }
 .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
 .chip span {
-  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 16px; border-radius: 999px;
   border: 1px solid rgba(124,130,87,.45); font-size: 1.02rem; line-height: 1.2; color: var(--ink);
   background: var(--paper); transition: background .2s, color .2s, border-color .2s;
 }
 .chip input:checked + span { background: var(--olive); border-color: var(--olive); color: var(--on-olive); }
-.chip input:checked + span::before { content: "✓"; font-size: .9em; }
+.chip .tick { display: none; width: 14px; height: 14px; }
+.chip input:checked + span .tick { display: block; }
+.chip:hover span { border-color: var(--olive); }
 .chip input:focus-visible + span { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--gold); }
 .attend { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .attend .chip span { display: grid; justify-items: center; gap: 6px; text-align: center; border-radius: 14px; padding: 14px 8px; height: 100%; }
 .attend .chip svg { width: 34px; height: 34px; color: var(--gold); }
 .attend .chip input:checked + span svg { color: var(--on-olive); }
-.attend .chip input:checked + span::before { content: none; }
+
 .q-card input[type="text"], .q-card textarea { background: var(--paper); }
-.when-yes { gap: 14px; }
+.when-yes { gap: 20px; }
 
 /* dress code cards */
-.dress-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
-.dress-card {
-  background: #fffdf8; border: 1px solid rgba(165,138,82,.28); border-radius: 120px 120px 14px 14px;
-  padding: 22px 12px 16px; display: grid; gap: 6px; justify-items: center; align-content: start; min-width: 0;
+.dress-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; }
+.dress-card { display: grid; gap: 8px; justify-items: center; align-content: start; min-width: 0; }
+.dress-card .arch {
+  width: 100%; max-width: 150px; aspect-ratio: 3 / 4; display: grid; place-items: center;
+  background: linear-gradient(180deg, #ffffff, var(--paper-edge)); border-radius: 999px 999px 14px 14px;
+  box-shadow: inset 0 0 0 1px rgba(165,138,82,.3);
 }
-.dress-card svg { width: 76px; height: 96px; }
+.dress-card svg { width: 58%; height: auto; }
 .dress-card h3 { margin: 0; font-family: var(--font-script); font-weight: 400; font-size: clamp(1.15rem, 5vw, 1.4rem); color: var(--olive-deep); }
 .dress-card p { margin: 0; font-size: .98rem; line-height: 1.4; color: var(--ink-soft); }
 @media (max-width: 380px) { .dress-cards { grid-template-columns: 1fr; } }
@@ -311,7 +321,7 @@ h2 {
 .manor svg { display: block; width: 100%; height: auto; }
 .avatar { width: 84px; height: 84px; border-radius: 50%; background: var(--paper-edge); display: grid; place-items: center; color: var(--gold); box-shadow: inset 0 0 0 1px rgba(165,138,82,.35); }
 .avatar svg { width: 46px; height: 46px; }
-.wish { background: rgba(251,247,238,.08); border: 1px solid rgba(251,247,238,.25); border-radius: 16px; padding: 18px 16px; width: 100%; max-width: 360px; }
+.wish + .wish { padding-top: 22px; border-top: 1px solid rgba(251,247,238,.3); width: 100%; max-width: 320px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -367,7 +377,7 @@ h2 {
         <span>Нашим дорогим гостям</span>
       </span>
     </button>
-    <p class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v4.5c0 3.6-2.4 6.5-6 6.5-2.5 0-3.8-1-5.3-3L4.4 14a1.5 1.5 0 0 1 2.3-1.9L9 14"/></svg>Нажмите на конверт</p>
+    <p class="hint"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M196,90a25.87,25.87,0,0,0-14.59,4.49A26,26,0,0,0,142,78.1V44a26,26,0,0,0-52,0v87l-7.53-12.1a26,26,0,0,0-45,26.07l4.67,8.25c34,60,48.07,84.77,93.86,84.77a86.1,86.1,0,0,0,86-86V116A26,26,0,0,0,196,90Zm14,62a74.09,74.09,0,0,1-74,74c-38.8,0-50-19.83-83.42-78.69L47.89,139l0,0A14,14,0,0,1,53,119.88,13.87,13.87,0,0,1,60,118a14,14,0,0,1,12.15,7l.1.17,18.68,30A6,6,0,0,0,102,152V44a14,14,0,0,1,28,0v68a6,6,0,0,0,12,0V100a14,14,0,0,1,28,0v20a6,6,0,0,0,12,0v-4a14,14,0,0,1,28,0Z"/></svg>Нажмите на конверт</p>
   </div>
 
   <article class="card" id="card">
@@ -482,8 +492,8 @@ h2 {
       <h2>Дресс-код</h2>
       <div class="text"><p>Мы готовим наш праздник в тонах сирени, оливы и сливок, и ваш наряд станет важным штрихом в этом ансамбле.</p></div>
       <div class="dress-cards">
-        <div class="dress-card"><svg viewBox="0 0 76 96" aria-hidden="true"><defs><linearGradient id="dg" x1="0" x2="1"><stop offset="0" stop-color="#e3a7b4"/><stop offset=".5" stop-color="#f2c6c9"/><stop offset="1" stop-color="#d993a3"/></linearGradient></defs><path d="M30 6c2 4 14 4 16 0l3 18-4 6 22 60H9l22-60-4-6z" fill="url(#dg)"/><path d="M27 24c6 3 16 3 22 0" stroke="#fff" stroke-opacity=".7" stroke-width="1.5" fill="none"/><path d="M38 30v60M30 50l-10 40M46 50l10 40" stroke="#b9707f" stroke-opacity=".3" fill="none"/></svg><h3>Дамам</h3><p>Вечерние или коктейльные платья пастельных оттенков из нашей палитры. Белый цвет оставим невесте.</p></div>
-        <div class="dress-card"><svg viewBox="0 0 76 96" aria-hidden="true"><path d="M18 8l20 6 20-6 12 10v74H6V18z" fill="#6c7350"/><path d="M28 10l10 30 10-30-10 4z" fill="#fbf7ee"/><path d="M38 14l-3 4 3 4 3-4z" fill="#3f3a36"/><path d="M38 22l-2 20 2 4 2-4z" fill="#a58a52"/><path d="M18 8l14 34-6 6 12 44M58 8L44 42l6 6-12 44" stroke="#4d5236" stroke-width="1.5" fill="none"/><circle cx="38" cy="58" r="1.6" fill="#3f3a36"/><circle cx="38" cy="68" r="1.6" fill="#3f3a36"/><path d="M50 30l6-1" stroke="#fbf7ee" stroke-width="2"/></svg><h3>Джентльменам</h3><p>Классический костюм или смокинг, брюки и рубашка в спокойных тонах палитры.</p></div>
+        <div class="dress-card"><div class="arch"><svg viewBox="0 0 76 96" aria-hidden="true"><defs><linearGradient id="dg" x1="0" x2="1"><stop offset="0" stop-color="#e3a7b4"/><stop offset=".5" stop-color="#f2c6c9"/><stop offset="1" stop-color="#d993a3"/></linearGradient></defs><path d="M30 6c2 4 14 4 16 0l3 18-4 6 22 60H9l22-60-4-6z" fill="url(#dg)"/><path d="M27 24c6 3 16 3 22 0" stroke="#fff" stroke-opacity=".7" stroke-width="1.5" fill="none"/><path d="M38 30v60M30 50l-10 40M46 50l10 40" stroke="#b9707f" stroke-opacity=".3" fill="none"/></svg></div><h3>Дамам</h3><p>Вечерние или коктейльные платья пастельных оттенков из нашей палитры. Белый цвет оставим невесте.</p></div>
+        <div class="dress-card"><div class="arch"><svg viewBox="0 0 76 96" aria-hidden="true"><path d="M18 8l20 6 20-6 12 10v74H6V18z" fill="#6c7350"/><path d="M28 10l10 30 10-30-10 4z" fill="#fbf7ee"/><path d="M38 14l-3 4 3 4 3-4z" fill="#3f3a36"/><path d="M38 22l-2 20 2 4 2-4z" fill="#a58a52"/><path d="M18 8l14 34-6 6 12 44M58 8L44 42l6 6-12 44" stroke="#4d5236" stroke-width="1.5" fill="none"/><circle cx="38" cy="58" r="1.6" fill="#3f3a36"/><circle cx="38" cy="68" r="1.6" fill="#3f3a36"/><path d="M50 30l6-1" stroke="#fbf7ee" stroke-width="2"/></svg></div><h3>Джентльменам</h3><p>Классический костюм или смокинг, брюки и рубашка в спокойных тонах палитры.</p></div>
       </div>
       <ul class="palette" aria-label="Цвета праздника"><li style="background:#3f3a36"></li><li style="background:#b57a52"></li><li style="background:#8a9160"></li><li style="background:#c4c9a0"></li><li style="background:#efe3cf"></li><li style="background:#e3a7b4"></li><li style="background:#f2c6c9"></li><li style="background:#8ea9cf"></li><li style="background:#c6d6ec"></li><li style="background:#f1dc9a"></li></ul>
       
@@ -517,15 +527,15 @@ h2 {
           </div>
           <div class="q-card">
             <div class="q-head"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M92,138a10,10,0,1,1,10-10A10,10,0,0,1,92,138Zm72-20a10,10,0,1,0,10,10A10,10,0,0,0,164,118Zm-11.2,44.92a47,47,0,0,1-49.6,0,6,6,0,0,0-6.4,10.16,59,59,0,0,0,62.4,0,6,6,0,1,0-6.4-10.16ZM230,128A102,102,0,1,1,128,26,102.12,102.12,0,0,1,230,128Zm-12,0a90.11,90.11,0,0,0-87.07-89.95C118.3,55.23,118,71.85,118,72a10,10,0,0,0,20,0,6,6,0,0,1,12,0,22,22,0,0,1-44,0c0-.75.15-15.82,10.14-33.22A90,90,0,1,0,218,128Z"/></svg><p class="q-title">Будете ли вы с детьми?<small>Если да, напишите, сколько им лет</small></p></div>
-            <div class="chips"><label class="chip"><input type="radio" name="kids" value="Да"><span>Да, с детьми</span></label><label class="chip"><input type="radio" name="kids" value="Нет"><span>Нет</span></label></div><input type="text" id="kidsInfo" name="kidsInfo" placeholder="Например: 2 ребёнка, 4 и 9 лет">
+            <div class="chips"><label class="chip"><input type="radio" name="kids" value="Да"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Да, с детьми</span></label><label class="chip"><input type="radio" name="kids" value="Нет"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Нет</span></label></div><input type="text" id="kidsInfo" name="kidsInfo" placeholder="Например: 2 ребёнка, 4 и 9 лет">
           </div>
           <div class="q-card">
             <div class="q-head"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M74,88V40a6,6,0,0,1,12,0V88a6,6,0,0,1-12,0ZM214,40V224a6,6,0,0,1-12,0V174H152a6,6,0,0,1-6-6c0-4.41.68-108.25,59.64-133.51A6,6,0,0,1,214,40ZM202,50c-36.79,24.29-42.82,91.48-43.81,112H202ZM117.92,39a6,6,0,1,0-11.84,2L114,88.48a34,34,0,0,1-68,0L53.92,41a6,6,0,0,0-11.84-2l-8,48A6.61,6.61,0,0,0,34,88a46.06,46.06,0,0,0,40,45.6V224a6,6,0,0,0,12,0V133.6A46.06,46.06,0,0,0,126,88a6.61,6.61,0,0,0-.08-1Z"/></svg><p class="q-title">Какое горячее предпочитаете?</p></div>
-            <div class="chips"><label class="chip"><input type="radio" name="main" value="Мясо"><span>Мясо</span></label><label class="chip"><input type="radio" name="main" value="Рыба"><span>Рыба</span></label><label class="chip"><input type="radio" name="main" value="Птица"><span>Птица</span></label><label class="chip"><input type="radio" name="main" value="Вегетарианское"><span>Вегетарианское</span></label></div>
+            <div class="chips"><label class="chip"><input type="radio" name="main" value="Мясо"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Мясо</span></label><label class="chip"><input type="radio" name="main" value="Рыба"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Рыба</span></label><label class="chip"><input type="radio" name="main" value="Птица"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Птица</span></label><label class="chip"><input type="radio" name="main" value="Вегетарианское"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Вегетарианское</span></label></div>
           </div>
           <div class="q-card">
             <div class="q-head"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M203.41,104.23,181.64,30.3a6,6,0,0,0-5.75-4.3H80.11a6,6,0,0,0-5.75,4.3L52.59,104.23a61.48,61.48,0,0,0,16.87,62.65A85.35,85.35,0,0,0,122,189.77V234H88a6,6,0,1,0,0,12h80a6,6,0,1,0,0-12H134V189.77a85.38,85.38,0,0,0,52.54-22.89A61.48,61.48,0,0,0,203.41,104.23ZM84.6,38h86.8l20.51,69.63c.26.9.5,1.8.71,2.7-22.54,9.07-48.17-.73-61.91-7.68C104.1,89.17,83.48,88.34,68.83,91.52Zm93.75,120.11a73.67,73.67,0,0,1-100.7,0,49.53,49.53,0,0,1-13.56-50.48l.74-2.51c12.34-4.46,32.26-6.05,60.46,8.23,11,5.55,28.65,12.64,47.52,12.64A65.56,65.56,0,0,0,194,122.62,49.22,49.22,0,0,1,178.35,158.11Z"/></svg><p class="q-title">Что будете пить?<small>Можно выбрать несколько</small></p></div>
-            <div class="chips"><label class="chip"><input type="checkbox" name="drinks" value="Шампанское"><span>Шампанское</span></label><label class="chip"><input type="checkbox" name="drinks" value="Белое вино"><span>Белое вино</span></label><label class="chip"><input type="checkbox" name="drinks" value="Красное вино"><span>Красное вино</span></label><label class="chip"><input type="checkbox" name="drinks" value="Водка"><span>Водка</span></label><label class="chip"><input type="checkbox" name="drinks" value="Коньяк"><span>Коньяк</span></label><label class="chip"><input type="checkbox" name="drinks" value="Виски"><span>Виски</span></label><label class="chip"><input type="checkbox" name="drinks" value="Джин / коктейли"><span>Джин / коктейли</span></label><label class="chip"><input type="checkbox" name="drinks" value="Не пью алкоголь"><span>Не пью алкоголь</span></label></div>
+            <div class="chips"><label class="chip"><input type="checkbox" name="drinks" value="Шампанское"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Шампанское</span></label><label class="chip"><input type="checkbox" name="drinks" value="Белое вино"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Белое вино</span></label><label class="chip"><input type="checkbox" name="drinks" value="Красное вино"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Красное вино</span></label><label class="chip"><input type="checkbox" name="drinks" value="Водка"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Водка</span></label><label class="chip"><input type="checkbox" name="drinks" value="Коньяк"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Коньяк</span></label><label class="chip"><input type="checkbox" name="drinks" value="Виски"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Виски</span></label><label class="chip"><input type="checkbox" name="drinks" value="Джин / коктейли"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Джин / коктейли</span></label><label class="chip"><input type="checkbox" name="drinks" value="Не пью алкоголь"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Не пью алкоголь</span></label></div>
           </div>
           <div class="q-card">
             <div class="q-head"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M221.45,40.19a6,6,0,0,0-5.64-5.64C140.43,30.11,80.14,52.71,54.53,95c-17.44,28.79-16.76,62.8,1.79,96.2L35.76,211.76a6,6,0,1,0,8.48,8.48L64.8,199.68c17.27,9.59,34.7,14.41,51.49,14.41A85.38,85.38,0,0,0,161,201.47C203.29,175.86,225.88,115.57,221.45,40.19Zm-66.66,151c-24.08,14.58-52.64,14.37-81.13-.39l90.59-90.59a6,6,0,0,0-8.48-8.48L65.18,182.34c-14.76-28.49-15-57-.39-81.13,22.68-37.43,76.63-57.8,145-54.95C212.59,114.58,192.22,168.54,154.79,191.21Z"/></svg><label for="food" class="q-title">Есть ли аллергии или ограничения в еде?</label></div>
@@ -533,11 +543,11 @@ h2 {
           </div>
           <div class="q-card">
             <div class="q-head"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M184,34H72A30,30,0,0,0,42,64V208a14,14,0,0,0,14,14H80a14,14,0,0,0,14-14V190h68v18a14,14,0,0,0,14,14h24a14,14,0,0,0,14-14V64A30,30,0,0,0,184,34ZM54,178V118H202v60ZM54,78H202v28H54ZM72,46H184a18,18,0,0,1,18,18v2H54V64A18,18,0,0,1,72,46ZM82,208a2,2,0,0,1-2,2H56a2,2,0,0,1-2-2V190H82Zm118,2H176a2,2,0,0,1-2-2V190h28v18A2,2,0,0,1,200,210Zm-98-62a10,10,0,1,1-10-10A10,10,0,0,1,102,148Zm72,0a10,10,0,1,1-10-10A10,10,0,0,1,174,148Zm72-68v24a6,6,0,0,1-12,0V80a6,6,0,0,1,12,0ZM22,80v24a6,6,0,0,1-12,0V80a6,6,0,0,1,12,0Z"/></svg><p class="q-title">Нужен ли трансфер?<small>Организуем автобус от города и обратно</small></p></div>
-            <div class="chips"><label class="chip"><input type="radio" name="transfer" value="Да"><span>Да, нужен</span></label><label class="chip"><input type="radio" name="transfer" value="Нет"><span>Нет, доберёмся сами</span></label></div>
+            <div class="chips"><label class="chip"><input type="radio" name="transfer" value="Да"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Да, нужен</span></label><label class="chip"><input type="radio" name="transfer" value="Нет"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Нет, доберёмся сами</span></label></div>
           </div>
           <div class="q-card">
             <div class="q-head"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M216,74H30V48a6,6,0,0,0-12,0V208a6,6,0,0,0,12,0V174H242v34a6,6,0,0,0,12,0V112A38,38,0,0,0,216,74ZM30,86h76v76H30Zm88,76V86h98a26,26,0,0,1,26,26v50Z"/></svg><p class="q-title">Нужна ли помощь с ночлегом?</p></div>
-            <div class="chips"><label class="chip"><input type="radio" name="stay" value="Да"><span>Да, нужна</span></label><label class="chip"><input type="radio" name="stay" value="Нет"><span>Нет</span></label></div>
+            <div class="chips"><label class="chip"><input type="radio" name="stay" value="Да"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Да, нужна</span></label><label class="chip"><input type="radio" name="stay" value="Нет"><span><svg class="tick" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>Нет</span></label></div>
           </div>
           <div class="q-card">
             <div class="q-head"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M211.69,19.27a6,6,0,0,0-5.15-1.09l-128,32A6,6,0,0,0,74,56V170.11A34,34,0,1,0,86,196V108.68l116-29v58.43A34,34,0,1,0,214,164V24A6,6,0,0,0,211.69,19.27ZM52,218a22,22,0,1,1,22-22A22,22,0,0,1,52,218ZM86,96.32V60.68l116-29V67.32ZM180,186a22,22,0,1,1,22-22A22,22,0,0,1,180,186Z"/></svg><label for="song" class="q-title">Какая песня точно поднимет вас на танцпол?<small>Добавим в плейлист вечера</small></label></div>
@@ -561,7 +571,7 @@ h2 {
     <section class="panel">
       <svg class="flourish" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2 11h50M98 11h50"/><path d="M75 11c-6-8-16-9-21-4 5 6 15 6 21 4zM75 11c6-8 16-9 21-4-5 6-15 6-21 4z" fill="currentColor" fill-opacity=".15"/><circle cx="75" cy="11" r="2" fill="currentColor"/><circle cx="52" cy="11" r="1.4" fill="currentColor"/><circle cx="98" cy="11" r="1.4" fill="currentColor"/></svg>
       <p class="signature">С любовью, Алексей и Мария</p>
-      <button class="replay" id="replay" type="button">Открыть конверт заново ↺</button>
+      <button class="replay" id="replay" type="button"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M222,128a94,94,0,0,1-92.74,94H128a93.43,93.43,0,0,1-64.5-25.65,6,6,0,1,1,8.24-8.72A82,82,0,1,0,70,70l-.19.19L39.44,98H72a6,6,0,0,1,0,12H24a6,6,0,0,1-6-6V56a6,6,0,0,1,12,0V90.34L61.63,61.4A94,94,0,0,1,222,128Z"/></svg>Открыть конверт заново</button>
     </section>
   </article>
 
@@ -658,6 +668,7 @@ h2 {
           var yes = attend.value !== 'Не придёт';
           try { localStorage.setItem(KEY, yes ? 'yes' : 'no'); } catch (e) {}
           showThanks(yes);
+          if (yes) burst();
         })
         .catch(function () {
           status.className = 'status err';
