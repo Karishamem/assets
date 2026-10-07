@@ -58,9 +58,6 @@ const ICONS = {
   organizer: svg('<circle cx="24" cy="15" r="7"/><path d="M10 40c0-8 6-14 14-14s14 6 14 14"/><path d="M33 9l4-3M35 15h5"/>'),
 };
 
-// Платье и костюм для дресс-кода
-const DRESS = '<svg viewBox="0 0 76 96" aria-hidden="true"><defs><linearGradient id="dg" x1="0" x2="1"><stop offset="0" stop-color="#e3a7b4"/><stop offset=".5" stop-color="#f2c6c9"/><stop offset="1" stop-color="#d993a3"/></linearGradient></defs><path d="M30 6c2 4 14 4 16 0l3 18-4 6 22 60H9l22-60-4-6z" fill="url(#dg)"/><path d="M27 24c6 3 16 3 22 0" stroke="#fff" stroke-opacity=".7" stroke-width="1.5" fill="none"/><path d="M38 30v60M30 50l-10 40M46 50l10 40" stroke="#b9707f" stroke-opacity=".3" fill="none"/></svg>';
-const SUIT = '<svg viewBox="0 0 76 96" aria-hidden="true"><path d="M18 8l20 6 20-6 12 10v74H6V18z" fill="#6c7350"/><path d="M28 10l10 30 10-30-10 4z" fill="#fbf7ee"/><path d="M38 14l-3 4 3 4 3-4z" fill="#3f3a36"/><path d="M38 22l-2 20 2 4 2-4z" fill="#a58a52"/><path d="M18 8l14 34-6 6 12 44M58 8L44 42l6 6-12 44" stroke="#4d5236" stroke-width="1.5" fill="none"/><circle cx="38" cy="58" r="1.6" fill="#3f3a36"/><circle cx="38" cy="68" r="1.6" fill="#3f3a36"/><path d="M50 30l6-1" stroke="#fbf7ee" stroke-width="2"/></svg>';
 
 // Иллюстрация усадьбы для блока «Локация»
 const MANOR = `<div class="manor"><svg viewBox="0 0 380 200" aria-hidden="true">
@@ -116,34 +113,31 @@ const FONT_FACE = `@font-face {
 
 const SOCIAL = { phone: ph('phone-fill'), whatsapp: ph('whatsapp-logo-fill'), telegram: ph('telegram-logo-fill') };
 
-const FLOURISH = '<svg class="flourish" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2 11h50M98 11h50"/><path d="M75 11c-6-8-16-9-21-4 5 6 15 6 21 4zM75 11c6-8 16-9 21-4-5 6-15 6-21 4z" fill="currentColor" fill-opacity=".15"/><circle cx="75" cy="11" r="2" fill="currentColor"/><circle cx="52" cy="11" r="1.4" fill="currentColor"/><circle cx="98" cy="11" r="1.4" fill="currentColor"/></svg>';
 
-const MEDALLION = '<svg class="medallion" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><ellipse cx="32" cy="32" rx="22" ry="27"/><ellipse cx="32" cy="32" rx="19" ry="24" stroke-dasharray="1 3" stroke-linecap="round"/><path d="M24 45c0-6 1-9 4-11-3-1-4-4-3-7s4-4 6-2c1 2 1 5-1 7 2 1 3 3 3 6" fill="currentColor" fill-opacity=".85" stroke="none"/><path d="M40 45c0-6-1-9-4-11 3-1 4-4 3-7s-4-4-6-2" fill="currentColor" fill-opacity=".5" stroke="none"/></svg>';
 
-const HEART_SHAPE = '<svg viewBox="0 0 300 276" aria-hidden="true"><path d="M150 268C70 214 10 160 10 92 10 42 48 8 92 8c28 0 46 14 58 34C162 22 180 8 208 8c44 0 82 34 82 84 0 68-60 122-140 176z" fill="#7c8257" stroke="#efe7d6" stroke-width="10"/><path d="M150 252C78 202 24 154 24 92 24 50 56 22 92 22c26 0 44 14 58 40 14-26 32-40 58-40 36 0 68 28 68 70 0 62-54 110-126 160z" fill="none" stroke="#fbf7ee" stroke-opacity=".55" stroke-width="1.2" stroke-dasharray="2 5" stroke-linecap="round"/></svg>';
 
 // ---------- Конверт ----------
-const PAPER_NOISE = '<filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .38  0 0 0 0 .28  0 0 0 .09 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>';
+const PAPER_NOISE = '<filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/><feColorMatrix values="0 0 0 0 .4  0 0 0 0 .3  0 0 0 0 .3  0 0 0 .08 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>';
 const ENVELOPE_SVG = `<svg class="env-back" viewBox="0 0 420 290" preserveAspectRatio="none" aria-hidden="true">
-        <defs>${PAPER_NOISE}<linearGradient id="inside" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfc2a6"/><stop offset="1" stop-color="#e6dbc4"/></linearGradient></defs>
+        <defs>${PAPER_NOISE}<linearGradient id="inside" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5e0a1c"/><stop offset="1" stop-color="#8c1230"/></linearGradient></defs>
         <rect width="420" height="290" rx="6" fill="url(#inside)"/>
       </svg>`;
 const ENVELOPE_FRONT = `<svg class="env-front" viewBox="0 0 420 290" preserveAspectRatio="none" aria-hidden="true">
         <defs>
-          <linearGradient id="fl" x1="0" x2="1"><stop offset="0" stop-color="#efe6d3"/><stop offset="1" stop-color="#e3d7bd"/></linearGradient>
-          <linearGradient id="fr" x1="1" x2="0"><stop offset="0" stop-color="#efe6d3"/><stop offset="1" stop-color="#e1d4b9"/></linearGradient>
-          <linearGradient id="fb" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f6efe0"/><stop offset="1" stop-color="#ebe1cb"/></linearGradient>
+          <linearGradient id="fl" x1="0" x2="1"><stop offset="0" stop-color="#f6ebe6"/><stop offset="1" stop-color="#e9d8d1"/></linearGradient>
+          <linearGradient id="fr" x1="1" x2="0"><stop offset="0" stop-color="#f6ebe6"/><stop offset="1" stop-color="#e6d3cb"/></linearGradient>
+          <linearGradient id="fb" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fbf3ef"/><stop offset="1" stop-color="#efe1db"/></linearGradient>
         </defs>
         <path d="M0 6Q0 0 6 0L200 150Q210 158 220 150L414 0Q420 0 420 6V284Q420 290 414 290H6Q0 290 0 284Z" fill="url(#fl)"/>
         <path d="M420 6L220 150Q210 158 200 150L0 6V284Q0 290 6 290H414Q420 290 420 284Z" fill="url(#fr)" opacity=".55"/>
         <path d="M0 290L196 136Q210 126 224 136L420 290Z" fill="url(#fb)"/>
-        <path d="M0 290L196 136Q210 126 224 136L420 290" fill="none" stroke="#bfae8b" stroke-opacity=".55" stroke-width="1"/>
-        <path d="M2 4L200 150M418 4L220 150" stroke="#bfae8b" stroke-opacity=".35" stroke-width="1"/>
+        <path d="M0 290L196 136Q210 126 224 136L420 290" fill="none" stroke="#c9a9a0" stroke-opacity=".6" stroke-width="1"/>
+        <path d="M2 4L200 150M418 4L220 150" stroke="#c9a9a0" stroke-opacity=".4" stroke-width="1"/>
         <rect width="420" height="290" rx="6" filter="url(#paper)" fill="#fff"/>
       </svg>`;
 const ENVELOPE_FLAP = `<svg class="flap" viewBox="0 0 420 290" preserveAspectRatio="none" aria-hidden="true">
-        <defs><linearGradient id="ft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9dfca"/><stop offset="1" stop-color="#f7f0e2"/></linearGradient>
-        <filter id="fs" x="-10%" y="-10%" width="120%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#5a4a30" flood-opacity=".22"/></filter></defs>
+        <defs><linearGradient id="ft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ead9d2"/><stop offset="1" stop-color="#f8eee9"/></linearGradient>
+        <filter id="fs" x="-10%" y="-10%" width="120%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4a1020" flood-opacity=".25"/></filter></defs>
         <path d="M0 4Q0 0 6 0H414Q420 0 420 4L228 160Q210 174 192 160Z" fill="url(#ft)" filter="url(#fs)"/>
         <path d="M0 4Q0 0 6 0H414Q420 0 420 4L228 160Q210 174 192 160Z" filter="url(#paper)" fill="#fff"/>
       </svg>`;
@@ -164,55 +158,52 @@ function sealSvg(initials) {
   }
   return `<svg viewBox="-4 -4 108 108" aria-hidden="true">
         <defs>
-          <radialGradient id="wax" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#a4ab78"/><stop offset=".55" stop-color="#7c8257"/><stop offset="1" stop-color="#4f5436"/></radialGradient>
-          <radialGradient id="wax2" cx=".6" cy=".65" r=".6"><stop offset="0" stop-color="#5f6542"/><stop offset="1" stop-color="#8c9265"/></radialGradient>
-          <filter id="ws"><feDropShadow dx="1" dy="3" stdDeviation="2.5" flood-color="#2e2a1c" flood-opacity=".45"/></filter>
+          <radialGradient id="wax" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#c0405c"/><stop offset=".55" stop-color="#8c1230"/><stop offset="1" stop-color="#4f0716"/></radialGradient>
+          <radialGradient id="wax2" cx=".6" cy=".65" r=".6"><stop offset="0" stop-color="#6c0c23"/><stop offset="1" stop-color="#9c2340"/></radialGradient>
+          <filter id="ws"><feDropShadow dx="1" dy="3" stdDeviation="2.5" flood-color="#200008" flood-opacity=".5"/></filter>
         </defs>
         <path d="${d}Z" fill="url(#wax)" filter="url(#ws)"/>
         <circle cx="50" cy="50" r="33" fill="url(#wax2)"/>
-        <circle cx="50" cy="50" r="33" fill="none" stroke="#3f4329" stroke-opacity=".5" stroke-width="1.5"/>
-        <circle cx="50" cy="50" r="28" fill="none" stroke="#c9cf9f" stroke-opacity=".5" stroke-width=".8" stroke-dasharray="1 3"/>
-        <text x="50" y="58" text-anchor="middle" font-family="Allegretto Script One, Marck Script, cursive" font-size="22" fill="#3f4329" fill-opacity=".55">${esc(initials)}</text>
-        <text x="49.4" y="57.2" text-anchor="middle" font-family="Allegretto Script One, Marck Script, cursive" font-size="22" fill="#e6e9c8" fill-opacity=".8">${esc(initials)}</text>
+        <circle cx="50" cy="50" r="33" fill="none" stroke="#3a0410" stroke-opacity=".5" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="28" fill="none" stroke="#f3c3cd" stroke-opacity=".45" stroke-width=".8" stroke-dasharray="1 3"/>
+        <text x="50" y="58" text-anchor="middle" font-family="Allegretto Script One, Marck Script, cursive" font-size="24" fill="#3a0410" fill-opacity=".55">${esc(initials)}</text>
+        <text x="49.4" y="57.2" text-anchor="middle" font-family="Allegretto Script One, Marck Script, cursive" font-size="24" fill="#fbe3e8" fill-opacity=".85">${esc(initials)}</text>
         <ellipse cx="34" cy="28" rx="10" ry="5" transform="rotate(-35 34 28)" fill="#fff" fill-opacity=".22"/>
       </svg>`;
 }
 
-// Кружевная рамка: овал с фестонами по краю и цветами снизу.
-function laceFrame() {
-  const cx = 160, cy = 192, rx = 132, ry = 172;
-  const scallops = [];
-  const holes = [];
-  const N = 64;
-  for (let i = 0; i < N; i++) {
-    const t = (i / N) * Math.PI * 2;
-    const x = cx + (rx + 5) * Math.cos(t), y = cy + (ry + 5) * Math.sin(t);
-    scallops.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9"/>`);
-    const hx = cx + (rx + 6) * Math.cos(t), hy = cy + (ry + 6) * Math.sin(t);
-    holes.push(`<circle cx="${hx.toFixed(1)}" cy="${hy.toFixed(1)}" r="1.6"/>`);
-  }
-  const rose = (x, y, r, c) => `<g transform="translate(${x} ${y})"><circle r="${r}" fill="${c}"/>`
-    + `<path d="M0 ${-r * 0.55}a${r * 0.55} ${r * 0.55} 0 1 1 ${-r * 0.5} ${r * 0.3}M${-r * 0.2} ${-r * 0.15}a${r * 0.25} ${r * 0.25} 0 1 1 ${r * 0.3} ${r * 0.25}" stroke="#fff" stroke-opacity=".7" stroke-width="1.2" fill="none"/></g>`;
-  const lavender = (x, y, h, rot) => {
-    let dots = '';
-    for (let k = 0; k < 7; k++) dots += `<ellipse cx="${(k % 2 ? 2.5 : -2.5)}" cy="${-k * h / 8}" rx="3" ry="4.2" fill="${k % 2 ? '#a99bd0' : '#c3b6e2'}"/>`;
-    return `<g transform="translate(${x} ${y}) rotate(${rot})"><path d="M0 8V${-h}" stroke="#8f9a6c" stroke-width="1.2"/>${dots}</g>`;
-  };
-  const leaf = (x, y, rot) => `<path transform="translate(${x} ${y}) rotate(${rot})" d="M0 0c8-10 22-10 28 0-8 7-20 7-28 0z" fill="#9aa47a"/>`;
-  const flowers = [
-    leaf(64, 352, -150), leaf(250, 352, -30), leaf(120, 372, 160), leaf(196, 372, 20),
-    lavender(84, 344, 40, -28), lavender(238, 344, 40, 28), lavender(110, 352, 34, -12), lavender(212, 352, 34, 12),
-    rose(128, 360, 17, '#e8b7bd'), rose(194, 360, 17, '#e8b7bd'), rose(160, 368, 21, '#f2d0cf'),
-    rose(98, 368, 12, '#efe3d2'), rose(224, 368, 12, '#efe3d2'), rose(142, 384, 10, '#d9a3ab'), rose(178, 384, 10, '#d9a3ab'),
-  ].join('');
-  return `<svg class="frame" viewBox="0 0 320 400" aria-hidden="true">
-        <g fill="#fffdf8" stroke="currentColor" stroke-width="1">${scallops.join('')}</g>
-        <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#fffdf8" stroke="currentColor" stroke-width="1"/>
-        <g fill="currentColor" fill-opacity=".55">${holes.join('')}</g>
-        <ellipse cx="${cx}" cy="${cy}" rx="${rx - 9}" ry="${ry - 9}" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="1 4" stroke-linecap="round"/>
-        <ellipse cx="${cx}" cy="${cy}" rx="${rx - 15}" ry="${ry - 15}" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width=".8"/>
-        ${flowers}
-      </svg>`;
+// Атласный бантик
+let bowId = 0;
+function bow() {
+  const id = `rb${bowId++}`;
+  return `<svg viewBox="0 0 140 172" aria-hidden="true">
+      <defs>
+        <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b42a48"/><stop offset=".45" stop-color="#8c1230"/><stop offset="1" stop-color="#5a0819"/></linearGradient>
+        <linearGradient id="${id}s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      </defs>
+      <path d="M64 56C58 84 38 102 44 130c4 18-8 30-16 38l12 3c8-10 22-22 16-42-4-22 12-44 14-71z" fill="url(#${id})"/>
+      <path d="M76 56c8 30 30 44 26 70-2 16 10 28 18 38l-11 4c-8-12-20-22-17-40 3-22-18-40-22-70z" fill="url(#${id})"/>
+      <path d="M70 50C50 20 16 6 10 30c-4 22 30 32 60 24z" fill="url(#${id})"/>
+      <path d="M70 50C92 18 128 8 131 32c3 22-32 30-61 22z" fill="url(#${id})"/>
+      <path d="M70 50C52 32 28 22 18 30" fill="none" stroke="#4a0614" stroke-opacity=".5" stroke-width="2"/>
+      <path d="M70 50C90 32 114 22 124 30" fill="none" stroke="#4a0614" stroke-opacity=".5" stroke-width="2"/>
+      <path d="M14 26c8-12 26-8 40 6" fill="none" stroke="url(#${id}s)" stroke-width="5" stroke-linecap="round"/>
+      <path d="M126 26c-8-12-26-8-40 6" fill="none" stroke="url(#${id}s)" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="70" cy="53" rx="10" ry="9" fill="#7a0f27"/>
+      <ellipse cx="67" cy="50" rx="4" ry="3" fill="#fff" fill-opacity=".25"/>
+    </svg>`;
+}
+
+const HEART = '<svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.5S0 14 0 6.5A6 6 0 0 1 12 4a6 6 0 0 1 12 2.5C24 14 12 21.5 12 21.5z" fill="currentColor"/></svg>';
+const BIG_HEART = '<svg viewBox="0 0 78 70" aria-hidden="true"><path d="M39 68S2 47 2 22A19 19 0 0 1 39 13a19 19 0 0 1 37 9c0 25-37 46-37 46z" fill="currentColor"/></svg>';
+
+// Картинки (фон, фото пары и площадки) встраиваем в страницу, чтобы они открывались по любой ссылке.
+const MIME = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp' };
+function dataUri(file) {
+  if (!file) return '';
+  const full = path.join(dir, file);
+  if (!fs.existsSync(full)) { console.warn(`Нет файла ${file}, пропускаю`); return ''; }
+  return `data:${MIME[path.extname(file).toLowerCase()] || 'image/jpeg'};base64,${fs.readFileSync(full).toString('base64')}`;
 }
 
 // Дата свадьбы без учёта часового пояса: берём YYYY-MM-DD из строки.
@@ -221,108 +212,94 @@ function weddingDay() {
   return m ? { y: +m[1], m: +m[2], d: +m[3] } : null;
 }
 
-function hero() {
-  const wd = weddingDay();
-  const dateLine = wd
-    ? `${String(wd.d).padStart(2, '0')}<i>|</i>${String(wd.m).padStart(2, '0')}<i>|</i>${wd.y}`
-    : esc(event.dateText);
+// Первая буква строки крупно и бордовым, как в образце.
+const capFirst = (s) => { const t = esc(s); return t ? `<b class="cap">${t[0]}</b>${t.slice(1)}` : ''; };
+
+function hero(greeting, names) {
+  const parts = names.split(/\s+и\s+/);
+  const nameHtml = parts.length === 2
+    ? `<span>${capFirst(parts[0])}</span><i>&amp;</i><span>${capFirst(parts[1])}</span>`
+    : `<span>${capFirst(names)}</span>`;
+  const photos = (couple.photos || []).map(dataUri).filter(Boolean);
+  const frame = (cls, i) => photos[i]
+    ? `<div class="photo ${cls}"><img src="${photos[i]}" alt="${esc(couple.groom)} и ${esc(couple.bride)}"></div>`
+    : `<div class="photo ${cls}"><div class="ph">${i === 0 ? HEART : ''}<span>${i === 0 ? esc(couple.groom[0]) : esc(couple.bride[0])}</span></div></div>`;
+  const line = Array(6).fill('I love you').join('   ');
   return `<section class="panel hero">
-      <div class="lace">
-        ${laceFrame()}
-        <div class="inner">
-          <p class="kicker">Приглашение<small>на свадьбу</small></p>
-          <h1 class="couple">${esc(couple.groom)}<br>&amp; ${esc(couple.bride)}</h1>
-          <p class="date">${dateLine}</p>
-        </div>
+      ${greeting ? `<p class="dear">${esc(greeting)}</p>` : ''}
+      <h1 class="guest-names">${nameHtml}</h1>
+      <div class="loves" aria-hidden="true">
+        <div class="lines">${Array(12).fill(`<span>${line}</span>`).join('')}</div>
+        ${frame('p1', 0)}${frame('p2', 1)}
       </div>
     </section>`;
 }
 
-function greetingPanel(greeting, names, message) {
+function intro(message) {
   return `<section class="panel">
-      ${MEDALLION}
-      <h2 class="greeting">${greeting ? `<small>${esc(greeting)}</small>` : ''}${esc(names)}</h2>
+      <h2>${esc(data.introTitle || 'Мы женимся!')}</h2>
       <div class="text">${paras(message)}</div>
-      ${FLOURISH}
     </section>`;
 }
 
-function calendar() {
+function ourDay() {
   const wd = weddingDay();
   if (!wd) return '';
-  const date = new Date(Date.UTC(wd.y, wd.m - 1, wd.d));
-  const dow = (date.getUTCDay() + 6) % 7; // 0 = понедельник
   const days = [];
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(date.getTime() + (i - dow) * 864e5).getUTCDate();
-    days.push(i === dow
-      ? `<b class="on" aria-label="${d}, наш день">${ph('heart-fill')}<em>${d}</em></b>`
-      : `<b>${d}</b>`);
+  for (let i = -2; i <= 2; i++) {
+    const d = new Date(Date.UTC(wd.y, wd.m - 1, wd.d + i)).getUTCDate();
+    days.push(i === 0 ? `<span class="on" aria-label="${d}, наш день">${BIG_HEART}<em>${d}</em></span>` : `<span>${d}</span>`);
   }
+  const items = (data.program || []).map((p) => `<li><span class="heart">${HEART}</span><div class="item"><time>${esc(p.time)}</time><b>${esc(p.title)}</b></div></li>`).join('');
   return `<section class="panel">
-      <h2>Наш ${MONTHS[wd.m - 1]}</h2>
-      <div class="week">${WEEKDAYS.map((w) => `<span>${w}</span>`).join('')}${days.join('')}</div>
-      ${event.dateText || event.time ? `<p class="muted">${esc([event.weekday, event.dateText, event.time && `в ${event.time}`].filter(Boolean).join(', '))}</p>` : ''}
-    </section>`;
-}
-
-function countdown() {
-  if (!event.date) return '';
-  return `<section class="panel olive">
-      <h2>Мы скажем «да» через…</h2>
-      <div class="units" id="countdown" aria-live="off"></div>
-    </section>`;
-}
-
-function program() {
-  if (!data.program || !data.program.length) return '';
-  const items = data.program.map((p) => `<li>
-          ${p.icon ? icon(p.icon).replace('<svg ', '<svg class="ico" ') : '<span></span>'}
-          <span class="rail"></span>
-          <div class="what"><div class="head"><b>${esc(p.title)}</b><time>${esc(p.time)}</time></div>${p.note ? `<p>${esc(p.note)}</p>` : ''}</div>
-        </li>`).join('');
-  return `<section class="panel">
-      <h2>Программа дня</h2>
-      <ol class="program">${items}</ol>
+      <h2>${esc(data.dayTitle || 'Наш день')}</h2>
+      <p class="month">${MONTHS[wd.m - 1]}</p>
+      <p class="year">${wd.y}</p>
+      <div class="days">${days.join('')}</div>
+      ${items ? `<ol class="timeline">${items}</ol>` : ''}
+      ${location()}
     </section>`;
 }
 
 function location() {
   if (!event.place && !event.address) return '';
-  return `<section class="panel">
-      <h2>Локация</h2>
-      <div class="text">
-        <p>${esc(event.locationText || 'Наша свадьба пройдёт по адресу:')}</p>
-        ${event.place ? `<p class="place-name">${esc(event.place)}</p>` : ''}
-        ${event.address ? `<p>${esc(event.address)}</p>` : ''}
-      </div>
-      ${event.mapUrl ? `<a class="btn" href="${esc(event.mapUrl)}" target="_blank" rel="noopener">Построить маршрут</a>` : ''}
-      ${event.photo ? `<img class="venue-photo" src="${esc(event.photo)}" alt="${esc(event.place)}" loading="lazy">` : MANOR}
-    </section>`;
-}
-
-function wishes() {
-  if (!data.wishes || !data.wishes.length) return '';
-  const items = data.wishes.map((w) => `<div class="wish">${icon(w.icon)}<h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div>`).join('');
-  return `<section class="panel olive">
-      <h2>Пожелания</h2>
-      ${items}
-    </section>`;
+  const photo = dataUri(event.photo);
+  return `<div class="block">
+        <h2>Ждём вас</h2>
+        <p class="text">${esc(event.locationText || 'по адресу:')}<br>${event.place ? `${esc(event.place)}, ` : ''}${esc(event.address)}</p>
+        <div class="venue">${photo ? `<img src="${photo}" alt="${esc(event.place)}" loading="lazy">` : MANOR}</div>
+        ${event.mapUrl ? `<a class="pill" href="${esc(event.mapUrl)}" target="_blank" rel="noopener">посмотреть на карте</a>` : ''}
+      </div>`;
 }
 
 function dressCode() {
   const dc = data.dressCode;
-  if (!dc || (!dc.text && !(dc.colors && dc.colors.length))) return '';
+  if (!dc) return '';
   const sw = (dc.colors || []).map((c) => `<li style="background:${esc(c)}"></li>`).join('');
   return `<section class="panel">
+      <span class="bow left">${bow()}</span>
       <h2>Дресс-код</h2>
       <div class="text">${paras(dc.text)}</div>
-      ${dc.ladies || dc.gentlemen ? `<div class="dress-cards">
-        ${dc.ladies ? `<div class="dress-card"><div class="arch">${DRESS}</div><h3>Дамам</h3><p>${esc(dc.ladies)}</p></div>` : ''}
-        ${dc.gentlemen ? `<div class="dress-card"><div class="arch">${SUIT}</div><h3>Джентльменам</h3><p>${esc(dc.gentlemen)}</p></div>` : ''}
-      </div>` : ''}
-      ${sw ? `<ul class="palette" aria-label="Цвета праздника">${sw}</ul>` : ''}
-      ${dc.inspirationUrl ? `<a class="btn" href="${esc(dc.inspirationUrl)}" target="_blank" rel="noopener">Вдохновиться</a>` : ''}
+      ${sw ? `<ul class="swatches" aria-label="Цвета праздника">${sw}</ul>` : ''}
+    </section>`;
+}
+
+function giftsAndChat() {
+  const w = data.wishes || [];
+  const chat = data.chat;
+  if (!w.length && !chat) return '';
+  const wishHtml = w.map((x) => `<h2>${esc(x.title)}</h2><div class="text">${paras(x.text)}</div>`).join('');
+  const chatHtml = chat ? `<h2>${esc(chat.title || 'Чат')}</h2><div class="text">${paras(chat.text)}</div>
+        ${chat.url ? `<a class="pill" href="${esc(chat.url)}" target="_blank" rel="noopener">присоединиться</a>` : ''}` : '';
+  return `<section class="panel"><div class="block">${wishHtml}${chatHtml}</div></section>`;
+}
+
+function countdown() {
+  if (!event.date) return '';
+  return `<section class="panel countdown">
+      <h2>Увидимся с вами через…</h2>
+      <div class="units" id="countdown" aria-live="off"></div>
+      <span class="bow right">${bow()}</span>
     </section>`;
 }
 
@@ -336,19 +313,13 @@ function organiser() {
   if (o.telegram) links.push(`<a href="https://t.me/${esc(o.telegram.replace(/^@/, ''))}" target="_blank" rel="noopener" aria-label="Telegram">${SOCIAL.telegram}</a>`);
   return `<section class="panel">
       <h2>Организатор</h2>
-      <div class="avatar">${ICONS.organizer}</div>
       <div class="text">
         <p>${esc(o.text || 'Если появятся вопросы, обращайтесь к нашему свадебному организатору:')}</p>
-        ${o.name ? `<p class="contact-name">${esc(o.name)}</p>` : ''}
+        ${o.name ? `<p><b>${esc(o.name)}</b></p>` : ''}
         ${o.phone ? `<p class="phone">${esc(o.phone)}</p>` : ''}
       </div>
       ${links.length ? `<div class="socials">${links.join('')}</div>` : ''}
     </section>`;
-}
-
-function quote() {
-  if (!data.quote) return '';
-  return `<section class="panel"><div class="heart">${HEART_SHAPE}<p>${esc(data.quote)}</p></div></section>`;
 }
 
 function rsvp(guest) {
@@ -366,7 +337,7 @@ function rsvp(guest) {
   cards.push(card('people', guest ? 'Кто придёт' : 'Ваше имя и фамилия', guest ? 'Поправьте, если придёте не все или со спутником' : '',
     `<input type="text" id="names" name="names" value="${guest ? esc(guest.names) : ''}" autocomplete="name">`, 'names'));
   if (r.askKids) cards.push(card('kids', 'Будете ли вы с детьми?', 'Если да, напишите, сколько им лет',
-    `${yesNo('kids', 'Да, с детьми', 'Нет')}<input type="text" id="kidsInfo" name="kidsInfo" placeholder="Например: 2 ребёнка, 4 и 9 лет">`));
+    `${yesNo('kids', 'Да, с детьми', 'Нет')}<input type="text" id="kidsInfo" name="kidsInfo" aria-label="Сколько детей и сколько им лет" placeholder="Например: 2 ребёнка, 4 и 9 лет">`));
   if (r.mains && r.mains.length) cards.push(card('dinner', 'Какое горячее предпочитаете?', '',
     `<div class="chips">${r.mains.map((m) => chip('radio', 'main', m)).join('')}</div>`));
   if (r.drinks && r.drinks.length) cards.push(card('drinks', 'Что будете пить?', 'Можно выбрать несколько',
@@ -409,28 +380,32 @@ function rsvp(guest) {
 
 function closing() {
   return `<section class="panel">
-      ${FLOURISH}
       <p class="signature">${esc(couple.signature)}</p>
       <button class="replay" id="replay" type="button">${ph('arrow-counter-clockwise-light')}Открыть конверт заново</button>
     </section>`;
 }
 
+const BG = dataUri(data.background || 'bg.jpg');
+
 function render({ greeting, names, envelopeNames, message, title, guest }) {
+  bowId = 0;
   const content = [
-    hero(), greetingPanel(greeting, names, message), calendar(), countdown(), program(),
-    location(), wishes(), dressCode(), organiser(), quote(), rsvp(guest), closing(),
+    hero(greeting, names), intro(message), ourDay(), dressCode(), giftsAndChat(), countdown(),
+    rsvp(guest), organiser(), closing(),
   ].filter(Boolean).map((s) => `    ${s}`).join('\n');
   const vars = {
     TITLE: esc(title),
-    DESCRIPTION: esc(`${couple.groom} и ${couple.bride} приглашают на свадьбу · ${event.dateText || ''}`),
+    DESCRIPTION: esc(`${couple.groom} и ${couple.bride} приглашают на свадьбу, ${event.dateText || ''}`),
     INITIALS: esc(couple.initials),
     ENVELOPE_NAMES: esc(envelopeNames),
     ENVELOPE_SVG,
     ENVELOPE_FRONT,
     ENVELOPE_FLAP,
     SEAL_SVG: sealSvg(couple.initials),
+    BOW: bow(),
+    BG_IMAGE: BG ? `url(${BG})` : '',
     HAND_ICON: ph('hand-pointing-light'),
-    FONT_FACE: FONT_FACE,
+    FONT_FACE,
     COUPLE_SHORT: `${esc(couple.groom)} &amp; ${esc(couple.bride)}`,
     CONTENT: content,
     EVENT_DATE: JSON.stringify(event.date || null),
@@ -458,9 +433,9 @@ const seen = new Set();
 fs.writeFileSync(path.join(dir, 'index.html'), render({
   greeting: '',
   names: data.generalGreeting || 'Дорогие гости!',
-  envelopeNames: 'Нашим дорогим гостям',
+  envelopeNames: data.generalGreeting || 'Дорогие гости!',
   message: data.defaultText,
-  title: `${couple.groom} и ${couple.bride} · свадьба`,
+  title: `${couple.groom} и ${couple.bride}: свадьба`,
 }));
 
 for (const g of data.guests) {
