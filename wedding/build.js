@@ -195,7 +195,7 @@ function bow() {
 }
 
 const HEART = '<svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.5S0 14 0 6.5A6 6 0 0 1 12 4a6 6 0 0 1 12 2.5C24 14 12 21.5 12 21.5z" fill="currentColor"/></svg>';
-const BIG_HEART = '<svg viewBox="0 0 78 70" aria-hidden="true"><path d="M39 68S2 47 2 22A19 19 0 0 1 39 13a19 19 0 0 1 37 9c0 25-37 46-37 46z" fill="currentColor"/></svg>';
+const BIG_HEART = '<svg viewBox="0 0 78 70" aria-hidden="true"><path d="M39 66C18 52 4 40 4 23 4 12 12 4 22 4c8 0 14 5 17 11 3-6 9-11 17-11 10 0 18 8 18 19 0 17-14 29-35 43z" fill="currentColor"/></svg>';
 
 // Картинки (фон, фото пары и площадки) встраиваем в страницу, чтобы они открывались по любой ссылке.
 const MIME = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp' };
@@ -230,7 +230,7 @@ function hero(greeting, names) {
       <h1 class="guest-names">${nameHtml}</h1>
       <div class="loves" aria-hidden="true">
         <div class="lines">${Array(12).fill(`<span>${line}</span>`).join('')}</div>
-        ${frame('p1', 0)}${frame('p2', 1)}
+        ${photos.length === 1 ? `<div class="photo single"><img src="${photos[0]}" alt="${esc(couple.groom)} и ${esc(couple.bride)}"></div>` : `${frame('p1', 0)}${frame('p2', 1)}`}
       </div>
     </section>`;
 }

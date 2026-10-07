@@ -173,6 +173,9 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
 .photo .ph { color: var(--on-wine); font-family: var(--font-script); font-size: 2.6rem; line-height: 1; display: grid; justify-items: center; gap: 8px; }
 .photo .ph svg { width: 34px; height: 34px; opacity: .8; }
 .photo.p1 { background: linear-gradient(160deg, #a3203f, var(--wine-deep)); }
+.photo.single { left: 9%; right: 9%; top: 34px; aspect-ratio: 6 / 5; transform: rotate(-2deg); border: 6px solid #fff; border-radius: 2px; }
+.loves:has(.single) { height: auto; aspect-ratio: auto; padding-block: 34px 40px; }
+.loves .photo.single { position: relative; left: auto; right: auto; top: auto; width: 82%; margin: 0 auto; }
 .photo.p2 { background: linear-gradient(200deg, #9a1a38, #5a0a1d); }
 
 /* our day */
