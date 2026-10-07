@@ -2,7 +2,10 @@
 
 | Гость | Ссылка |
 |---|---|
-| Иван Петрович и Мария Ивановна | https://karishamem.github.io/assets/wedding/ivanovy/ |
-| Сергей Николаевич | https://karishamem.github.io/assets/wedding/sergey-nikolaevich/ |
-| Елена | https://karishamem.github.io/assets/wedding/elena/ |
-| Семья Смирновых | https://karishamem.github.io/assets/wedding/smirnovy/ |
+| Константин и Светлана | /konstantin-svetlana/ |
+| Любовь Иннокентьевна | /lyubov-innokentevna/ |
+| Виктория | /viktoriya/ |
+| Валерий и Екатерина | /valeriy-ekaterina/ |
+| Екатерина | /ekaterina/ |
+| Татьяна | /tatyana/ |
+| Андрей и Ульяна | /andrey-ulyana/ |

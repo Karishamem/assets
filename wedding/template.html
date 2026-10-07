@@ -31,7 +31,7 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; overflow-x: clip; }
+html, body { margin: 0; overflow-x: hidden; overflow-x: clip; }
 ::selection { background: #f0c9d2; color: var(--ink); }
 html { scrollbar-color: var(--wine) #2a2627; caret-color: var(--wine); }
 body {
@@ -174,7 +174,7 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
 .photo .ph svg { width: 34px; height: 34px; opacity: .8; }
 .photo.p1 { background: linear-gradient(160deg, #a3203f, var(--wine-deep)); }
 .photo.single { left: 9%; right: 9%; top: 34px; aspect-ratio: 6 / 5; transform: rotate(-2deg); border: 6px solid #fff; border-radius: 2px; }
-.loves:has(.single) { height: auto; aspect-ratio: auto; padding-block: 34px 40px; }
+.loves.has-single { height: auto; aspect-ratio: auto; padding-block: 34px 40px; }
 .loves .photo.single { position: relative; left: auto; right: auto; top: auto; width: 82%; margin: 0 auto; }
 .photo.p2 { background: linear-gradient(200deg, #9a1a38, #5a0a1d); }
 
@@ -417,18 +417,19 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
       e.preventDefault();
       var attend = form.querySelector('input[name="attend"]:checked');
       if (!attend) { status.className = 'status err'; status.textContent = 'Отметьте, пожалуйста, сможете ли Вы прийти.'; return; }
-      if (!RSVP.endpoint) {
-        status.className = 'status err';
-        status.textContent = 'Анкета ещё не подключена к таблице, поэтому ответ не отправлен.';
-        return;
-      }
       var fd = new FormData(form), params = new URLSearchParams();
-      params.append('guest', RSVP.guest);
       fd.forEach(function (v, k) { if (k !== 'drinks') params.append(k, v); });
       params.append('drinks', fd.getAll('drinks').join(', '));
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true; status.className = 'status'; status.textContent = 'Отправляем…';
-      fetch(RSVP.endpoint, { method: 'POST', mode: 'no-cors', body: params })
+      // По умолчанию ответы принимают формы Netlify; если задан свой адрес (endpoint), шлём туда.
+      // Свой адрес на этом же сайте (функция Netlify) отвечает нам, и мы видим ошибки;
+      // внешний адрес (например, Google Apps Script) шлём «вслепую».
+      var req = RSVP.endpoint.charAt(0) === '/'
+        ? fetch(RSVP.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() })
+            .then(function (r) { if (!r.ok) throw new Error(r.status); })
+        : fetch(RSVP.endpoint, { method: 'POST', mode: 'no-cors', body: params });
+      req
         .then(function () {
           var yes = attend.value !== 'Не придёт';
           try { localStorage.setItem(KEY, yes ? 'yes' : 'no'); } catch (e) {}

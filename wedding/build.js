@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Генерирует персональные страницы-приглашения из guests.json.
 // Запуск: node wedding/build.js
-// Результат: wedding/index.html (общая страница), wedding/<slug>/index.html
+// Результат: wedding/site/index.html (общая страница), wedding/site/<slug>/index.html
 // для каждого гостя и wedding/links.md со списком ссылок для рассылки.
 
 const fs = require('fs');
@@ -228,7 +228,7 @@ function hero(greeting, names) {
   return `<section class="panel hero">
       ${greeting ? `<p class="dear">${esc(greeting)}</p>` : ''}
       <h1 class="guest-names">${nameHtml}</h1>
-      <div class="loves" aria-hidden="true">
+      <div class="loves${photos.length === 1 ? ' has-single' : ''}" aria-hidden="true">
         <div class="lines">${Array(16).fill(`<span>${line}</span>`).join('')}</div>
         ${photos.length === 1 ? `<div class="photo single"><img src="${photos[0]}" alt="${esc(couple.groom)} и ${esc(couple.bride)}"></div>` : `${frame('p1', 0)}${frame('p2', 1)}`}
       </div>
@@ -362,7 +362,9 @@ function rsvp(guest) {
   return `<section class="panel" id="anketa">
       <h2>Анкета гостя</h2>
       <p class="text">${r.intro ? esc(r.intro) : `Чтобы мы всё подготовили и позаботились о вашем комфорте, заполните, пожалуйста, анкету${r.deadline ? ` до ${esc(r.deadline)}` : ''}.`}</p>
-      <form class="rsvp" id="rsvp" novalidate>
+      <form class="rsvp" id="rsvp" name="rsvp" method="POST" novalidate>
+        <input type="hidden" name="guest" value="${guest ? esc(guest.names) : 'Общая страница'}">
+        <p hidden><label>Не заполняйте это поле: <input name="bot-field"></label></p>
         <div class="q-card">
           <div class="q-head">${ICONS.heart}<p class="q-title">Сможете ли Вы прийти?</p></div>
           <div class="attend">
@@ -419,27 +421,24 @@ function render({ greeting, names, envelopeNames, message, title, guest }) {
     CONTENT: content,
     EVENT_DATE: JSON.stringify(event.date || null),
     RSVP_CONFIG: JSON.stringify({
-      endpoint: (data.rsvp && data.rsvp.endpoint) || '',
+      endpoint: (data.rsvp && data.rsvp.endpoint) || '/api/rsvp',
       guest: guest ? guest.names : 'Общая страница',
     }).replace(/</g, '\\u003c'),
   };
   return template.replace(/\{\{(\w+)\}\}/g, (m, key) => (key in vars ? vars[key] : m));
 }
 
-// Удаляем старые сгенерированные папки, чтобы переименованные гости не оставались.
-const MARK = '.generated';
-for (const name of fs.readdirSync(dir)) {
-  const p = path.join(dir, name);
-  if (fs.statSync(p).isDirectory() && fs.existsSync(path.join(p, MARK))) {
-    fs.rmSync(p, { recursive: true });
-  }
-}
+// Готовые страницы складываем в site/ (её и публикует Netlify). Папку пересоздаём с нуля,
+// чтобы переименованные или удалённые гости не оставались.
+const OUT = path.join(dir, 'site');
+fs.rmSync(OUT, { recursive: true, force: true });
+fs.mkdirSync(OUT, { recursive: true });
 
 const base = (data.siteUrl || '').replace(/\/?$/, '/');
 const links = [];
 const seen = new Set();
 
-fs.writeFileSync(path.join(dir, 'index.html'), render({
+fs.writeFileSync(path.join(OUT, 'index.html'), render({
   greeting: '',
   names: data.generalGreeting || 'Дорогие гости!',
   envelopeNames: data.generalGreeting || 'Дорогие гости!',
@@ -453,9 +452,8 @@ for (const g of data.guests) {
   if (seen.has(slug)) throw new Error(`Адрес «${slug}» повторяется, задайте разный slug`);
   seen.add(slug);
 
-  const out = path.join(dir, slug);
+  const out = path.join(OUT, slug);
   fs.mkdirSync(out, { recursive: true });
-  fs.writeFileSync(path.join(out, MARK), '');
   fs.writeFileSync(path.join(out, 'index.html'), render({
     greeting: g.greeting || GREETINGS[g.type] || 'Дорогие',
     names: g.names,
@@ -464,7 +462,7 @@ for (const g of data.guests) {
     title: `${g.names}: приглашение на свадьбу`,
     guest: g,
   }));
-  links.push(`| ${g.names} | ${base}${slug}/ |`);
+  links.push(`| ${g.names} | ${base || '/'}${slug}/ |`);
 }
 
 fs.writeFileSync(path.join(dir, 'links.md'),

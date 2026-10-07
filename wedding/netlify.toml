@@ -1,0 +1,6 @@
+# Настройки для Netlify: сайт собирается из guests.json, готовые страницы лежат в site/,
+# функция анкеты в netlify/functions.
+[build]
+  command = "node build.js"
+  publish = "site"
+  functions = "netlify/functions"
