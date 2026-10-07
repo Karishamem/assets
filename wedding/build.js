@@ -107,6 +107,13 @@ Object.assign(ICONS, {
 const icon = (name) => ICONS[name] || ICONS.heart;
 
 
+// Рукописный шрифт встраиваем прямо в страницу, чтобы он работал по любой ссылке.
+const FONT_FACE = `@font-face {
+  font-family: "Allegretto Script One";
+  src: url(data:font/woff2;base64,${fs.readFileSync(path.join(dir, 'fonts', 'AllegrettoScriptOne.woff2')).toString('base64')}) format("woff2");
+  font-display: swap;
+}`;
+
 const SOCIAL = { phone: ph('phone-fill'), whatsapp: ph('whatsapp-logo-fill'), telegram: ph('telegram-logo-fill') };
 
 const FLOURISH = '<svg class="flourish" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2 11h50M98 11h50"/><path d="M75 11c-6-8-16-9-21-4 5 6 15 6 21 4zM75 11c6-8 16-9 21-4-5 6-15 6-21 4z" fill="currentColor" fill-opacity=".15"/><circle cx="75" cy="11" r="2" fill="currentColor"/><circle cx="52" cy="11" r="1.4" fill="currentColor"/><circle cx="98" cy="11" r="1.4" fill="currentColor"/></svg>';
@@ -165,8 +172,8 @@ function sealSvg(initials) {
         <circle cx="50" cy="50" r="33" fill="url(#wax2)"/>
         <circle cx="50" cy="50" r="33" fill="none" stroke="#3f4329" stroke-opacity=".5" stroke-width="1.5"/>
         <circle cx="50" cy="50" r="28" fill="none" stroke="#c9cf9f" stroke-opacity=".5" stroke-width=".8" stroke-dasharray="1 3"/>
-        <text x="50" y="58" text-anchor="middle" font-family="Marck Script, cursive" font-size="22" fill="#3f4329" fill-opacity=".55">${esc(initials)}</text>
-        <text x="49.4" y="57.2" text-anchor="middle" font-family="Marck Script, cursive" font-size="22" fill="#e6e9c8" fill-opacity=".8">${esc(initials)}</text>
+        <text x="50" y="58" text-anchor="middle" font-family="Allegretto Script One, Marck Script, cursive" font-size="22" fill="#3f4329" fill-opacity=".55">${esc(initials)}</text>
+        <text x="49.4" y="57.2" text-anchor="middle" font-family="Allegretto Script One, Marck Script, cursive" font-size="22" fill="#e6e9c8" fill-opacity=".8">${esc(initials)}</text>
         <ellipse cx="34" cy="28" rx="10" ry="5" transform="rotate(-35 34 28)" fill="#fff" fill-opacity=".22"/>
       </svg>`;
 }
@@ -423,6 +430,7 @@ function render({ greeting, names, envelopeNames, message, title, guest }) {
     ENVELOPE_FLAP,
     SEAL_SVG: sealSvg(couple.initials),
     HAND_ICON: ph('hand-pointing-light'),
+    FONT_FACE: FONT_FACE,
     COUPLE_SHORT: `${esc(couple.groom)} &amp; ${esc(couple.bride)}`,
     CONTENT: content,
     EVENT_DATE: JSON.stringify(event.date || null),

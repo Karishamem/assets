@@ -85,4 +85,6 @@ node wedding/build.js
 Страницы будут открываться по адресу `https://karishamem.github.io/assets/wedding/<slug>/`.
 Базовый адрес задаётся в поле `siteUrl` в `guests.json`.
 
+Рукописный шрифт Allegretto Script One лежит в `fonts/` и встраивается в каждую страницу при сборке.
+
 Иконки взяты из набора [Phosphor](https://phosphoricons.com) (лицензия MIT, файл `icons/LICENSE-phosphor`).
