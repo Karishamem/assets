@@ -250,7 +250,7 @@ function ourDay() {
     const d = new Date(Date.UTC(wd.y, wd.m - 1, wd.d + i)).getUTCDate();
     days.push(i === 0 ? `<span class="on" aria-label="${d}, наш день">${BIG_HEART}<em>${d}</em></span>` : `<span>${d}</span>`);
   }
-  const items = (data.program || []).map((p) => `<li><span class="heart">${HEART}</span><div class="item"><time>${esc(p.time)}</time><b>${esc(p.title)}</b></div></li>`).join('');
+  const items = (data.program || []).map((p) => `<li><span class="heart">${HEART}</span><div class="item"><time>${esc(p.time)}</time><b>${esc(p.title)}</b>${p.note ? `<small>${esc(p.note)}</small>` : ''}</div></li>`).join('');
   return `<section class="panel">
       <h2>${esc(data.dayTitle || 'Наш день')}</h2>
       <p class="month">${MONTHS[wd.m - 1]}</p>
@@ -267,6 +267,7 @@ function location() {
   return `<div class="block">
         <h2>Ждём вас</h2>
         <p class="text">${esc(event.locationText || 'по адресу:')}<br>${event.place ? `${esc(event.place)}, ` : ''}${esc(event.address)}</p>
+        ${event.note ? `<p class="text note">${esc(event.note)}</p>` : ''}
         <div class="venue">${photo ? `<img src="${photo}" alt="${esc(event.place)}" loading="lazy">` : MANOR}</div>
         ${event.mapUrl ? `<a class="pill" href="${esc(event.mapUrl)}" target="_blank" rel="noopener">посмотреть на карте</a>` : ''}
       </div>`;
@@ -280,6 +281,10 @@ function dressCode() {
       <span class="bow left">${bow()}</span>
       <h2>Дресс-код</h2>
       <div class="text">${paras(dc.text)}</div>
+      ${dc.ladies || dc.gentlemen ? `<div class="dress">
+        ${dc.ladies ? `<div class="dress-item">${ph('dress-light')}<h3>Дамам</h3><p>${esc(dc.ladies)}</p></div>` : ''}
+        ${dc.gentlemen ? `<div class="dress-item">${ph('shirt-folded-light')}<h3>Кавалерам</h3><p>${esc(dc.gentlemen)}</p></div>` : ''}
+      </div>` : ''}
       ${sw ? `<ul class="swatches" aria-label="Цвета праздника">${sw}</ul>` : ''}
     </section>`;
 }
@@ -310,7 +315,8 @@ function organiser() {
   const links = [];
   if (digits) links.push(`<a href="tel:${esc(digits)}" aria-label="Позвонить">${SOCIAL.phone}</a>`);
   if (o.whatsapp) links.push(`<a href="https://wa.me/${esc(o.whatsapp.replace(/\D/g, ''))}" target="_blank" rel="noopener" aria-label="WhatsApp">${SOCIAL.whatsapp}</a>`);
-  if (o.telegram) links.push(`<a href="https://t.me/${esc(o.telegram.replace(/^@/, ''))}" target="_blank" rel="noopener" aria-label="Telegram">${SOCIAL.telegram}</a>`);
+  if (o.max) links.push(`<a class="max" href="${esc(o.max)}" target="_blank" rel="noopener" aria-label="MAX">MAX</a>`);
+  if (o.telegram) links.push(`<a href="${/^https?:/.test(o.telegram) ? esc(o.telegram) : `https://t.me/${esc(o.telegram.replace(/^@/, ''))}`}" target="_blank" rel="noopener" aria-label="Telegram">${SOCIAL.telegram}</a>`);
   return `<section class="panel">
       <h2>Организатор</h2>
       <div class="text">
@@ -342,7 +348,7 @@ function rsvp(guest) {
     `<div class="chips">${r.mains.map((m) => chip('radio', 'main', m)).join('')}</div>`));
   if (r.drinks && r.drinks.length) cards.push(card('drinks', 'Что будете пить?', 'Можно выбрать несколько',
     `<div class="chips">${r.drinks.map((d) => chip('checkbox', 'drinks', d)).join('')}</div>`));
-  cards.push(card('allergy', 'Есть ли аллергии или ограничения в еде?', '',
+  if (r.askAllergy) cards.push(card('allergy', 'Есть ли аллергии или ограничения в еде?', '',
     `<input type="text" id="food" name="food" placeholder="Например: не ем орехи, без глютена">`, 'food'));
   if (r.askTransfer) cards.push(card('bus', 'Нужен ли трансфер?', 'Организуем автобус от города и обратно',
     yesNo('transfer', 'Да, нужен', 'Нет, доберёмся сами')));

@@ -217,6 +217,17 @@ h2::first-letter { color: var(--wine); font-size: 1.4em; }
 .lbl { font-family: var(--font-script); font-size: 1.05rem; color: var(--wine); line-height: 1; }
 .cd-done { font-family: var(--font-script); font-size: 2.4rem; color: var(--wine); }
 
+.timeline small { display: block; font-size: .78rem; line-height: 1.45; color: var(--ink-soft); margin-top: 4px; }
+.block .note { font-size: .85rem; opacity: .92; font-style: italic; }
+.dress { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
+.dress-item { display: grid; justify-items: center; gap: 6px; align-content: start; padding: 18px 10px; border: 1px solid rgba(140,18,48,.35); border-radius: 999px 999px 10px 10px; background: #fff; min-width: 0; }
+.dress-item svg { width: 44px; height: 44px; color: var(--wine); }
+.dress-item h3 { margin: 0; font-family: var(--font-script); font-weight: 400; font-size: 1.7rem; line-height: 1.1; }
+.dress-item h3::first-letter { color: var(--wine); }
+.dress-item p { margin: 0; font-size: .85rem; line-height: 1.5; color: var(--ink-soft); }
+.socials a.max { font-family: var(--font-body); font-weight: 600; font-size: .72rem; letter-spacing: .04em; text-decoration: none; }
+@media (max-width: 360px) { .dress { grid-template-columns: 1fr; } }
+
 /* organiser */
 .phone { font-size: 1.1rem; user-select: all; }
 .socials { display: flex; gap: 14px; justify-content: center; }
